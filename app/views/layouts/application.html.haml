@@ -1,0 +1,58 @@
+!!!
+%html
+  %head
+    %title MakerParent
+
+    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    =# stylesheet_link_tag    '//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/css/bootstrap.css'
+    = stylesheet_link_tag     '//getbootstrap.com/dist/css/bootstrap.min.css'
+
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = javascript_include_tag '//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/js/bootstrap.min.js'
+
+    %meta{name: "viewport", content: "width=device-width, initial-scale=1.0"}
+    = csrf_meta_tags
+
+  %body
+    - unless @hide_navbar
+      .navbar.navbar-inverse.navbar-fixed-top
+        .container
+          .navbar-header
+            %button.navbar-toggle{type: "button", data: {toggle: 'collapse', target: '.navbar-collapse'}}
+              %span.icon-bar
+              %span.icon-bar
+              %span.icon-bar
+            %a.navbar-brand{href: '#'} MakerParent
+          .navbar-collapse.collapse
+            %ul.nav.navbar-nav
+              %li.active
+                %a{href: '#'} Home
+              %li
+                %a{href: '#about'} About
+              %li
+                %a{href: '#contact'} Contact
+              %li.dropdown
+                %a.dropdown-toggle{href: '#', data: {toggle: 'dropdown'}}
+                  Dropdown
+                  %b.caret
+                %ul.dropdown-menu
+                  %li
+                    %a{href: '#'} Action
+                  %li
+                    %a{href: '#'} Another action
+                  %li
+                    %a{href: '#'} Something else here
+                  %li.divider
+                  %li.dropdown-header Nav header
+                  %li
+                    %a{href: '#'} Separated link
+                  %li
+                    %a{href: '#'} One more separated link
+            %form.navbar-form.navbar-right
+              .form-group
+                %input{type: 'text', placeholder: 'Email', class: 'form-control'}
+              .form-group
+                %input{type: 'password', placeholder: 'Password', class: 'form-control'}
+              %button.btn.btn-success{type: 'submit'} Sign In
+
+    = yield
