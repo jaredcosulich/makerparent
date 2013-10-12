@@ -18,4 +18,5 @@ gem 'sdoc', require: false, group: :doc
 gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
 gem 'unicorn'
+gem 'paperclip', '~> 3.0'
 
