@@ -25,9 +25,9 @@
             = link_to 'MakerParent', root_path, class: 'navbar-brand'
           .navbar-collapse.collapse
             %ul.nav.navbar-nav
-              %li.active
+              %li{class: ('active' if controller.is_a?(WelcomeController))}
                 = link_to 'Home', root_path
-              %li
+              %li{class: ('active' if controller.is_a?(ProjectsController))}
                 = link_to 'Explore', projects_path
               %li
                 %a{href: '#contact'} Contact

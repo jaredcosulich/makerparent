@@ -3,6 +3,7 @@ class CreateProjects < ActiveRecord::Migration
     create_table :projects do |t|
       t.string :title
       t.text :description
+      t.string :url
       t.attachment :photo
       t.integer :min_time
       t.integer :max_time

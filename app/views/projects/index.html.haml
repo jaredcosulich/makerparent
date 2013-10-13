@@ -1,35 +1,38 @@
-%h1 Listing projects
+.container
+  %h1 Listing projects
 
-%table
-  %tr
-    %th Title
-    %th Description
-    %th Photo
-    %th Min time
-    %th Max time
-    %th Min age
-    %th Max age
-    %th Min cost
-    %th Max cost
-    %th
-    %th
-    %th
-
-  - @projects.each do |project|
+  %table
     %tr
-      %td= project.title
-      %td= project.description
-      %td= project.photo
-      %td= project.min_time
-      %td= project.max_time
-      %td= project.min_age
-      %td= project.max_age
-      %td= project.min_cost
-      %td= project.max_cost
-      %td= link_to 'Show', project
-      %td= link_to 'Edit', edit_project_path(project)
-      %td= link_to 'Destroy', project, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %th Title
+      %th URL
+      %th Description
+      %th Photo
+      %th Min time
+      %th Max time
+      %th Min age
+      %th Max age
+      %th Min cost
+      %th Max cost
+      %th
+      %th
+      %th
 
-%br
+    - @projects.each do |project|
+      %tr
+        %td= project.title
+        %td= project.url
+        %td= project.description
+        %td= project.photo
+        %td= project.min_time
+        %td= project.max_time
+        %td= project.min_age
+        %td= project.max_age
+        %td= project.min_cost
+        %td= project.max_cost
+        %td= link_to 'Show', project
+        %td= link_to 'Edit', edit_project_path(project)
+        %td= link_to 'Destroy', project, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
-= link_to 'New Project', new_project_path
+  %br
+
+  = link_to 'New Project', new_project_path

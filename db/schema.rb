@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20131012215526) do
   create_table "projects", force: true do |t|
     t.string   "title"
     t.text     "description"
+    t.string   "url"
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
