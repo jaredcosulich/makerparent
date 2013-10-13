@@ -5,7 +5,7 @@ describe "projects/edit" do
     @project = assign(:project, stub_model(Project,
       :title => "MyString",
       :description => "MyText",
-      :attachment => "",
+      :photo => "",
       :min_time => 1,
       :max_time => 1,
       :min_age => 1,
@@ -22,7 +22,7 @@ describe "projects/edit" do
     assert_select "form[action=?][method=?]", project_path(@project), "post" do
       assert_select "input#project_title[name=?]", "project[title]"
       assert_select "textarea#project_description[name=?]", "project[description]"
-      assert_select "input#project_attachment[name=?]", "project[attachment]"
+      assert_select "input#project_photo[name=?]", "project[photo]"
       assert_select "input#project_min_time[name=?]", "project[min_time]"
       assert_select "input#project_max_time[name=?]", "project[max_time]"
       assert_select "input#project_min_age[name=?]", "project[min_age]"

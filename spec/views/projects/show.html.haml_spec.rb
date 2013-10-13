@@ -5,7 +5,7 @@ describe "projects/show" do
     @project = assign(:project, stub_model(Project,
       :title => "Title",
       :description => "MyText",
-      :attachment => "",
+      :photo => "",
       :min_time => 1,
       :max_time => 2,
       :min_age => 3,
