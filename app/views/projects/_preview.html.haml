@@ -1,4 +1,6 @@
-.project_thumb
+.project_preview
   = image_tag project.photo(:thumb), class: 'img-rounded'
-  %h4= link_to project.title, project_path(project)
-  %p= project.description
+  .info
+    %h4= link_to truncate(project.title, length: 36), project_path(project)
+    %p= truncate(project.description, length: 60)
+    %p= link_to raw('View Project &raquo;'), project_path(project)

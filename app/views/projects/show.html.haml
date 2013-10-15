@@ -4,7 +4,7 @@
 
   .project.col-xs-12.col-sm-6.col-md-8.well.well-lg
     .details
-      = image_tag @project.photo.url, class: 'pull-left'
+      = image_tag @project.photo.url(:medium), class: 'pull-left'
       .info
         %h3= @project.title
         %p= @project.description

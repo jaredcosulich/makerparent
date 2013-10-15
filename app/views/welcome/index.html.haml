@@ -10,15 +10,15 @@
     .col-lg-4
       .header 
         %h5 Recent
-      - @projects.each do |project| 
+      - @recent.each do |project| 
         = render partial: "projects/preview", locals: {project: project}
     .col-lg-4
       .header 
         %h5 Popular
-      - @projects.each do |project| 
+      - @popular.each do |project| 
         = render partial: "projects/preview", locals: {project: project}
     .col-lg-4
       .header 
         %h5 Simple
-      - @projects.each do |project| 
+      - @simple.each do |project| 
         = render partial: "projects/preview", locals: {project: project}        
