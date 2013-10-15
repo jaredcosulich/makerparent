@@ -3,12 +3,17 @@
   %p#notice= notice
 
   .project.col-xs-12.col-sm-6.col-md-8.well.well-lg
-    = image_tag @project.photo.url, class: 'pull-left'
-    .info
-      %h2= @project.title
-      %p= @project.description
+    .details
+      = image_tag @project.photo.url, class: 'pull-left'
+      .info
+        %h3= @project.title
+        %p= @project.description
+        %p
+          = link_to "Visit Website", @project.url, class: 'btn btn-primary', target: '_blank'
       
-      .actions
-        = link_to "Visit Website", @project.url, class: 'btn btn-primary'
-        = link_to 'Edit', edit_project_path(@project), class: 'btn btn-success'
+      
+      .admin_actions
+        = link_to ' Edit', edit_project_path(@project), class: 'icon-pencil'
+        &nbsp;|&nbsp;
+        = link_to ' Delete', project_path(@project), method: 'delete', class: 'icon-trash'
       
