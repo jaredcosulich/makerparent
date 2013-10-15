@@ -6,16 +6,18 @@
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
     =# stylesheet_link_tag    '//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/css/bootstrap.css'
     = stylesheet_link_tag     '//getbootstrap.com/dist/css/bootstrap.min.css'
+    = stylesheet_link_tag     '//fonts.googleapis.com/css?family=Muli'
 
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = javascript_include_tag '//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/js/bootstrap.min.js'
 
     %meta{name: "viewport", content: "width=device-width, initial-scale=1.0"}
+    %meta{name: "description", content: "Project and activity ideas for parents and teachers from parents and teachers."}
     = csrf_meta_tags
 
   %body
     - unless @hide_navbar
-      .navbar.navbar-inverse.navbar-fixed-top
+      .navbar.navbar-fixed-top
         .container
           .navbar-header
             %button.navbar-toggle{type: "button", data: {toggle: 'collapse', target: '.navbar-collapse'}}
@@ -25,34 +27,20 @@
             = link_to 'MakerParent', root_path, class: 'navbar-brand'
           .navbar-collapse.collapse
             %ul.nav.navbar-nav
-              %li{class: ('active' if controller.is_a?(WelcomeController))}
-                = link_to 'Home', root_path
               %li{class: ('active' if controller.is_a?(ProjectsController))}
                 = link_to 'Explore', projects_path
-              %li
-                %a{href: '#contact'} Contact
-              %li.dropdown
-                %a.dropdown-toggle{href: '#', data: {toggle: 'dropdown'}}
-                  Dropdown
-                  %b.caret
-                %ul.dropdown-menu
-                  %li
-                    %a{href: '#'} Action
-                  %li
-                    %a{href: '#'} Another action
-                  %li
-                    %a{href: '#'} Something else here
-                  %li.divider
-                  %li.dropdown-header Nav header
-                  %li
-                    %a{href: '#'} Separated link
-                  %li
-                    %a{href: '#'} One more separated link
+              %li{class: ('active' if controller.is_a?(ProjectsController))}
+                = link_to 'Contribute', projects_path
+              /%li{class: ('active' if controller.is_a?(ProjectsController))}
+              /  = link_to 'Chat', projects_path
+              /%li{class: ('active' if controller.is_a?(ProjectsController))}
+              /  = link_to 'Store', projects_path
             %form.navbar-form.navbar-right
               .form-group
                 %input{type: 'text', placeholder: 'Email', class: 'form-control'}
               .form-group
                 %input{type: 'password', placeholder: 'Password', class: 'form-control'}
               %button.btn.btn-success{type: 'submit'} Sign In
+              %button.btn.btn-primary{type: 'submit'} Register
 
     = yield

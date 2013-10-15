@@ -1,37 +1,14 @@
 .container
+
   %p#notice= notice
 
-  %p
-    %b Title:
-    = @project.title
-  %p
-    %b URL:
-    = @project.url
-  %p
-    %b Description:
-    = @project.description
-  %p
-    %b Photo:
-    = @project.photo
-  %p
-    %b Min time:
-    = @project.min_time
-  %p
-    %b Max time:
-    = @project.max_time
-  %p
-    %b Min age:
-    = @project.min_age
-  %p
-    %b Max age:
-    = @project.max_age
-  %p
-    %b Min cost:
-    = @project.min_cost
-  %p
-    %b Max cost:
-    = @project.max_cost
-
-  = link_to 'Edit', edit_project_path(@project)
-  \|
-  = link_to 'Back', projects_path
+  .project.col-xs-12.col-sm-6.col-md-8.well.well-lg
+    = image_tag @project.photo.url, class: 'pull-left'
+    .info
+      %h2= @project.title
+      %p= @project.description
+      
+      .actions
+        = link_to "Visit Website", @project.url, class: 'btn btn-primary'
+        = link_to 'Edit', edit_project_path(@project), class: 'btn btn-success'
+      

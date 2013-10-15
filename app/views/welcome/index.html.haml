@@ -1,5 +1,24 @@
 .jumbotron
   .container
-    .buffer Project ideas for parents & teachers from parents & teachers.
-    %a.btn.btn-primary.btn-lg Explore &raquo;
-    %a.btn.btn-success.btn-lg Contribute &raquo;
+    .buffer Project & activity ideas for parents & teachers from parents & teachers.
+    = link_to raw('Explore &raquo;'), projects_path, class: 'btn btn-primary btn-lg'
+    = link_to raw('Contribute &raquo;'), projects_path, class: 'btn btn-success btn-lg'
+
+
+.container
+  .project_lists.row
+    .col-lg-4
+      .header 
+        %h5 Recent
+      - @projects.each do |project| 
+        = render partial: "projects/preview", locals: {project: project}
+    .col-lg-4
+      .header 
+        %h5 Popular
+      - @projects.each do |project| 
+        = render partial: "projects/preview", locals: {project: project}
+    .col-lg-4
+      .header 
+        %h5 Simple
+      - @projects.each do |project| 
+        = render partial: "projects/preview", locals: {project: project}        
