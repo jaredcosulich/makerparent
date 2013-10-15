@@ -1,4 +1,4 @@
 .project_thumb
   = image_tag project.photo(:thumb), class: 'img-rounded'
-  %h4= project.title
+  %h4= link_to project.title, project_path(project)
   %p= project.description
