@@ -8,13 +8,13 @@
 
   .form_group
     = f.label :title
-    = f.text_field :title, class: 'form-control'
+    = f.text_field :title, class: 'form-control', placeholder: 'Example: Create A Flip Book'
   .form_group
-    = f.label :url
-    = f.text_field :url, class: 'form-control'
+    = f.label :url, 'Website or Video Link'
+    = f.text_field :url, class: 'form-control', placeholder: 'Example: http://www.youtube.com/watch?v=iExiCGV7jzI&hd=1'
   .form_group
     = f.label :description
-    = f.text_area :description, class: 'form-control'
+    = f.text_area :description, class: 'form-control', placeholder: 'Example: Make an animated character dance with this simple animation technique.'
   .form_group
     = f.label :photo
     = f.file_field :photo, class: 'form-control'

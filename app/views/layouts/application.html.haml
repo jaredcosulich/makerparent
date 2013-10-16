@@ -44,4 +44,5 @@
               %button.btn.btn-success{type: 'submit'} Sign In
               %button.btn.btn-primary{type: 'submit'} Register
 
-    = yield
+    %div{class: controller.controller_name}
+      = yield
