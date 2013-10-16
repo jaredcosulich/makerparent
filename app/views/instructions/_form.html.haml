@@ -1,0 +1,19 @@
+= form_for @instruction do |f|
+  - if @instruction.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@instruction.errors.count, "error")} prohibited this instruction from being saved:"
+      %ul
+        - @instruction.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :text
+    = f.text_area :text
+  .field
+    = f.label :position
+    = f.number_field :position
+  .field
+    = f.label :image
+    = f.text_field :image
+  .actions
+    = f.submit 'Save'

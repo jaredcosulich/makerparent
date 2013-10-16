@@ -75,9 +75,9 @@ describe ProjectsController do
         assigns(:project).should be_persisted
       end
 
-      it "redirects to the created project" do
+      it "redirects to new instruction page" do
         post :create, {:project => valid_attributes}, valid_session
-        response.should redirect_to(Project.last)
+        response.should redirect_to(new_project_instruction_url(Project.last))
       end
     end
 
