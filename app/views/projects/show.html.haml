@@ -9,7 +9,8 @@
         %h3= @project.title
         %p= @project.description
         %p
-          = link_to "Visit Website", @project.url, class: 'btn btn-primary', target: '_blank'
+          - if @project.url?
+            = link_to "Visit Website", @project.url, class: 'btn btn-primary', target: '_blank'
       
       
       .admin_actions
