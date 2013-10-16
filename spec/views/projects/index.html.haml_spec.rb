@@ -7,25 +7,11 @@ describe "projects/index" do
         :title => "Title",
         :url => "URL",
         :description => "MyText",
-        :photo => "",
-        :min_time => 1,
-        :max_time => 2,
-        :min_age => 3,
-        :max_age => 4,
-        :min_cost => 5,
-        :max_cost => 6
       ),
       stub_model(Project,
         :title => "Title",
         :url => "URL",
         :description => "MyText",
-        :photo => "",
-        :min_time => 1,
-        :max_time => 2,
-        :min_age => 3,
-        :max_age => 4,
-        :min_cost => 5,
-        :max_cost => 6
       )
     ])
   end
@@ -36,12 +22,5 @@ describe "projects/index" do
     assert_select "tr>td", :text => "Title".to_s, :count => 2
     assert_select "tr>td", :text => "URL".to_s, :count => 2
     assert_select "tr>td", :text => "MyText".to_s, :count => 2
-    assert_select "tr>td", :text => "".to_s, :count => 2
-    assert_select "tr>td", :text => 1.to_s, :count => 2
-    assert_select "tr>td", :text => 2.to_s, :count => 2
-    assert_select "tr>td", :text => 3.to_s, :count => 2
-    assert_select "tr>td", :text => 4.to_s, :count => 2
-    assert_select "tr>td", :text => 5.to_s, :count => 2
-    assert_select "tr>td", :text => 6.to_s, :count => 2
   end
 end

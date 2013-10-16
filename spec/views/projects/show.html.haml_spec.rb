@@ -6,13 +6,6 @@ describe "projects/show" do
       :title => "Title",
       :url => "Url",
       :description => "MyText",
-      :photo => "",
-      :min_time => 1,
-      :max_time => 2,
-      :min_age => 3,
-      :max_age => 4,
-      :min_cost => 5,
-      :max_cost => 6
     ))
   end
 
@@ -22,12 +15,5 @@ describe "projects/show" do
     rendered.should match(/Title/)
     rendered.should match(/Url/)
     rendered.should match(/MyText/)
-    rendered.should match(//)
-    rendered.should match(/1/)
-    rendered.should match(/2/)
-    rendered.should match(/3/)
-    rendered.should match(/4/)
-    rendered.should match(/5/)
-    rendered.should match(/6/)
   end
 end
