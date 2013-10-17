@@ -2,24 +2,41 @@
 
   %p#notice= notice
 
-  .project.col-xs-12.col-sm-6.col-md-8.well.well-lg
-    .details
-      = image_tag @project.photo.url(:medium), class: 'pull-left'
-      .info
-        %h3= @project.title
-        %p= @project.description
-        %p
-          - if @project.url?
-            = link_to "Visit Website", @project.url, class: 'btn btn-primary', target: '_blank'
+  .col-md-8
+    .project.well.well-lg
+      .details
+        = image_tag @project.photo.url(:medium), class: 'pull-left'
+        .info
+          %h3= @project.title
+          %p= @project.description
+          %p
+            - if @project.url?
+              = link_to "Visit Website", @project.url, class: 'btn btn-primary', target: '_blank'
       
       
-      .admin_actions
-        %a.icon-edit{href: (@project.instructions.blank? ? '#add-instructions' : '#instructions'), data: {toggle: 'modal'}} &nbsp;Instructions
-        &nbsp;|&nbsp;
-        = link_to ' Edit', edit_project_path(@project), class: 'icon-pencil'
-        &nbsp;|&nbsp;
-        = link_to ' Delete', @project, method: 'delete', class: 'icon-trash'
+        .admin_actions
+          %a.icon-edit{href: (@project.instructions.blank? ? '#add-instructions' : '#instructions'), data: {toggle: 'modal'}} &nbsp;Instructions
+          &nbsp;|&nbsp;
+          = link_to ' Edit', edit_project_path(@project), class: 'icon-pencil'
+          &nbsp;|&nbsp;
+          = link_to ' Delete', @project, method: 'delete', class: 'icon-trash'
       
+  .clearfix
+
+  .materials.col-md-4
+    .panel.panel-default    
+      .panel-heading
+        %h3.panel-title Materials
+      .panel-body
+        Panel content
+
+  .materials.col-md-8
+    .panel.panel-default    
+      .panel-heading
+        %h3.panel-title Experience Reports
+      .panel-body
+        Panel content
+
   #add-instructions.modal.fade{tabindex: -1, role: 'dialog', aria: {labelledby: 'instructions', hidden: 'true'}}
     .modal-dialog
       .modal-content      

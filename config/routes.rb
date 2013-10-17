@@ -1,4 +1,6 @@
 Makerparent::Application.routes.draw do
+  resources :experiences
+
   resources :instructions
 
   resources :projects do

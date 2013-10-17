@@ -16,4 +16,5 @@
     = f.label :image
     = f.file_field :image, class: 'form-control'
   .actions.form_group
-    = f.submit 'Save'
+    = f.submit 'Save', class: 'btn btn-default'
+    = link_to 'Cancel', @project, class: 'btn btn-default'

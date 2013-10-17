@@ -1,0 +1,33 @@
+%p#notice= notice
+
+%p
+  %b Summary:
+  = @experience.summary
+%p
+  %b Details:
+  = @experience.details
+%p
+  %b User:
+  = @experience.user_id
+%p
+  %b Time:
+  = @experience.time
+%p
+  %b Cost:
+  = @experience.cost
+%p
+  %b Min age:
+  = @experience.min_age
+%p
+  %b Max age:
+  = @experience.max_age
+%p
+  %b Recommended:
+  = @experience.recommended
+%p
+  %b Simple:
+  = @experience.simple
+
+= link_to 'Edit', edit_experience_path(@experience)
+\|
+= link_to 'Back', experiences_path

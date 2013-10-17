@@ -1,5 +1,5 @@
 .project_preview
-  = image_tag project.photo(:thumb), class: 'img-rounded'
+  =link_to image_tag(project.photo(:thumb), class: 'img-rounded'), project
   .info
     %h4= link_to truncate(project.title, length: 27), project
     %p= truncate(project.description, length: 60)
