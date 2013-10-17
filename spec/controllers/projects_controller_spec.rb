@@ -77,7 +77,7 @@ describe ProjectsController do
 
       it "redirects to new instruction page" do
         post :create, {:project => valid_attributes}, valid_session
-        response.should redirect_to(new_project_instruction_url(Project.last))
+        response.should redirect_to(project_path(Project.last, new: true))
       end
     end
 

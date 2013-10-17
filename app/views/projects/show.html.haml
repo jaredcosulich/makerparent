@@ -14,7 +14,25 @@
       
       
       .admin_actions
+        %a.icon-edit{href: (@project.instructions.blank? ? '#add-instructions' : '#instructions'), data: {toggle: 'modal'}} &nbsp;Instructions
+        &nbsp;|&nbsp;
         = link_to ' Edit', edit_project_path(@project), class: 'icon-pencil'
         &nbsp;|&nbsp;
         = link_to ' Delete', @project, method: 'delete', class: 'icon-trash'
       
+  #add-instructions.modal.fade{tabindex: -1, role: 'dialog', aria: {labelledby: 'instructions', hidden: 'true'}}
+    .modal-dialog
+      .modal-content      
+        .modal-header
+          %h4 Would you like to add instructions?
+        .modal-body
+          %br
+          %p
+            You can add custom, step-by-step instructions with a photo for each step to help
+            people figure out how to do this project successfully.
+          %br
+          %p
+            Would you like to add instructions now? You can also do so later.
+        .modal-footer
+          = link_to 'Add Instructions', new_project_instruction_path(@project), class: 'btn btn-default', type: 'button'
+          %button.btn.btn-default{type: 'button', data: {dismiss: 'modal'}} Close

@@ -1,5 +1,7 @@
-%h1 New instruction
-
-= render 'form'
-
-= link_to 'Back', instructions_path
+.container
+  .col-lg-6.centered
+    %h2 Add A New Instructional Step
+    %p 
+      Add a step to the instructions for 
+      = "\"#{@project.title}\"."
+    = render 'form'

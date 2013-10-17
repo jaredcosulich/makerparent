@@ -6,14 +6,14 @@
         - @instruction.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
+  .form_group
     = f.label :text
-    = f.text_area :text
-  .field
+    = f.text_area :text, class: 'form-control'
+  .form_group
     = f.label :position
-    = f.number_field :position
-  .field
+    = f.number_field :position, class: 'form-control'
+  .form_group
     = f.label :image
-    = f.text_field :image
-  .actions
+    = f.file_field :image, class: 'form-control'
+  .actions.form_group
     = f.submit 'Save'

@@ -4,6 +4,7 @@ class CreateInstructions < ActiveRecord::Migration
       t.text :text
       t.integer :position
       t.attachment :image
+      t.integer :project_id
 
       t.timestamps
     end

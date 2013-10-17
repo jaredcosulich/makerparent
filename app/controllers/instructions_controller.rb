@@ -1,4 +1,5 @@
 class InstructionsController < ApplicationController
+  before_action :set_project, only: [:new]
   before_action :set_instruction, only: [:show, :edit, :update, :destroy]
 
   # GET /instructions
@@ -49,6 +50,10 @@ class InstructionsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_instruction
       @instruction = Instruction.find(params[:id])
+    end
+
+    def set_project
+      @project = Project.find(params[:project_id])
     end
 
     # Only allow a trusted parameter "white list" through.
