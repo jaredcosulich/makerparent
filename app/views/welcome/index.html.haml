@@ -7,17 +7,17 @@
 
 .container
   .project_lists.row
-    .col-lg-4
+    .col-md-4
       .header 
         %h5 Recent
       - @recent.each do |project| 
         = render partial: "projects/preview", locals: {project: project}
-    .col-lg-4
+    .col-md-4
       .header 
         %h5 Popular
       - @popular.each do |project| 
         = render partial: "projects/preview", locals: {project: project}
-    .col-lg-4
+    .col-md-4
       .header 
         %h5 Simple
       - @simple.each do |project| 
