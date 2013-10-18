@@ -30,13 +30,20 @@
       .panel-body
         Panel content
 
-  .materials.col-md-8
+  .experiences.col-md-8
     .panel.panel-default    
       .panel-heading
         %h3.panel-title Experience Reports
       .panel-body
-        Panel content
-
+        
+        
+        .add_experience.col-md-8.centered
+          %h4 Have you tried this project?
+          %p Share your experience. Positive or negative.
+          %br
+          %p= link_to raw('&nbsp; Add Report'), new_project_experience_path(@project), class: 'btn btn-primary icon-plus-sign'
+        
+        
   #add-instructions.modal.fade{tabindex: -1, role: 'dialog', aria: {labelledby: 'instructions', hidden: 'true'}}
     .modal-dialog
       .modal-content      

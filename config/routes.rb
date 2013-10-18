@@ -1,10 +1,9 @@
 Makerparent::Application.routes.draw do
-  resources :experiences
-
-  resources :instructions
 
   resources :projects do
     resources :instructions
+    resources :experiences
+    resources :materials
   end
 
   get 'about', to: 'about#index'
