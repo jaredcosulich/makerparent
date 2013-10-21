@@ -3,8 +3,9 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .projects
+  padding-top: 24px
+  
   .project
-    margin-top: 24px
     border: 1px solid #ccc
 
     .details  
@@ -28,11 +29,41 @@
         bottom: 0
         right: 0
         
-  .experiences
-    .add_experience
+  .project-extra
+    padding-top: 24px
+
+    .experiences
+      .add_experience
+        text-align: center
+        border: 1px solid #efefef
+        padding: 30px
+      
+      
+  .search-projects
+    .search-box
+      border-top: 1px solid #eee
+      border-bottom: 1px solid #eee
+      border-right: 1px solid #eee
+      background-color: white
+      height: 120px
       text-align: center
-      border: 1px solid #efefef
-      padding: 30px
+      
+      &:first-child
+        border-left: 1px solid #efefef
+      
+    .project_listing
+      overflow: hidden
+      padding: 24px 0
+      border-bottom: 1px solid #efefef
+      
+      img
+        margin-right: 12px
+      
+      h4
+        margin: 0
+        
+      
+      
         
 .project_preview
   overflow: hidden

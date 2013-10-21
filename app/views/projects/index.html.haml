@@ -1,38 +1,75 @@
+.jumbotron
+  .container
+    .buffer 
+      %h2.title-font Explore Projects
+
 .container
-  %h1 Listing projects
+  .search-projects.col-md-9
+    .row
+      .search-box.col-md-5
+        %h3.title-font KEYWORDS
+        .input-group
+          %input.form-control{type: 'text', placeholder: 'e.g. science, outdoors, paint'}
+          %span.input-group-btn
+            %button.btn.btn-default{type: 'button'} Search
+                
+      .col-md-7
+        .search-box.col-lg-4.col-md-6
+          %h3.title-font AGE
+          .btn-group
+            %button.btn.btn-default{type: 'button'} All Ages
+            %button.btn.btn-default.dropdown-toggle{type: 'button', data: {toggle: 'dropdown'}}
+              %span.caret            
+            %ul.dropdown-menu{role: 'menu'}
+              %li
+                %a Action
+        
+        .search-box.col-lg-4.col-md-6
+          %h3.title-font 1ST SORT
+          .btn-group
+            %button.btn.btn-default{type: 'button'} Popular
+            %button.btn.btn-default.dropdown-toggle{type: 'button', data: {toggle: 'dropdown'}}
+              %span.caret            
+            %ul.dropdown-menu{role: 'menu'}
+              %li
+                %a Popular
+              %li
+                %a Recent
+              %li
+                %a Simple
+              %li
+                %a Cost
+              
 
-  %table
-    %tr
-      %th Title
-      %th URL
-      %th Description
-      %th Photo
-      %th Min time
-      %th Max time
-      %th Min age
-      %th Max age
-      %th Min cost
-      %th Max cost
-      %th
-      %th
-      %th
-
+        .search-box.col-lg-4.visible-lg
+          %h3.title-font 2ND SORT
+          .btn-group
+            %button.btn.btn-default{type: 'button'} Simple
+            %button.btn.btn-default.dropdown-toggle{type: 'button', data: {toggle: 'dropdown'}}
+              %span.caret            
+            %ul.dropdown-menu{role: 'menu'}
+              %li
+                %a Popular
+              %li
+                %a Recent
+              %li
+                %a Simple
+              %li
+                %a Cost
+    
     - @projects.each do |project|
-      %tr
-        %td= project.title
-        %td= project.url
-        %td= project.description
-        %td= project.photo
-        %td= project.min_time
-        %td= project.max_time
-        %td= project.min_age
-        %td= project.max_age
-        %td= project.min_cost
-        %td= project.max_cost
-        %td= link_to 'Show', project
-        %td= link_to 'Edit', edit_project_path(project)
-        %td= link_to 'Destroy', project, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
-  %br
+      .project_listing
+        .pull-left
+          = link_to image_tag(project.photo(:square), class: 'img-rounded'), project
+        .info
+          %h4= link_to truncate(project.title, length: 36), project
+          %br
+          %p= truncate(project.description, length: 150)
 
-  = link_to 'New Project', new_project_path
+    = link_to 'New Project', new_project_path
+    
+    
+  .col-md-3.hidden-sm.hidden-xs
+    .skyscraper-ad
+      &nbsp;
