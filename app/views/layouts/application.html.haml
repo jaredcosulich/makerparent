@@ -8,7 +8,7 @@
     = stylesheet_link_tag     '//fonts.googleapis.com/css?family=Muli'
 
     = javascript_include_tag "application", "data-turbolinks-track" => true
-    = javascript_include_tag '//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/js/bootstrap.min.js'
+    =# javascript_include_tag '//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/js/bootstrap.min.js'
 
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
 
@@ -18,7 +18,7 @@
 
   %body
     - unless @hide_navbar
-      .navbar.navbar-fixed-top
+      .navbar.navbar-fixed-top.title-font
         .container
           .navbar-header
             %button.navbar-toggle{type: "button", data: {toggle: 'collapse', target: '.navbar-collapse'}}
@@ -47,5 +47,11 @@
     %div{class: controller.controller_name}
       = yield
 
-
     .footer
+      .container
+        .pull-right
+          = link_to '2014 Irrational Design', ''
+        = link_to('Contact', '')
+        &nbsp; &nbsp;
+        = link_to('About', '')
+        

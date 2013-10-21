@@ -4,21 +4,47 @@
     = link_to raw('Explore &raquo;'), projects_path, class: 'btn btn-primary btn-lg'
     = link_to raw('Contribute &raquo;'), projects_path, class: 'btn btn-success btn-lg'
 
+.ages.centered.text-centered
+  %h4.title-font 
+    Find projects for specific ages: 
+    .btn-group
+      %button.btn.btn-default.dropdown-toggle{type: 'button', data: {toggle: 'dropdown'}}
+        %span.age-selection 1 Year Old 
+        %span.caret
+      
+      %ul.age-dropdown.dropdown-menu{role: 'menu', aria: {labelledby: 'age-dropdown'}}
+        - (1..17).each do |i|
+          %li{class: ('active' if i == 1)}
+            %a= "#{pluralize(i, 'year')} old"
+        %li
+          %a 18+ years old
+    
+    %button.btn.btn-success{type: 'button'} Go &raquo;
+
 
 .container
   .project_lists.row
     .col-md-4
-      .header 
-        %h5 Recent
+      = link_to raw('<h5>Recent</h5>'), projects_path, class: 'header'
       - @recent.each do |project| 
         = render partial: "projects/preview", locals: {project: project}
+      %br
+      %p.text-centered
+        = link_to raw('Recent Projects &raquo;'), projects_path, class: 'btn btn-default'  
+        
     .col-md-4
-      .header 
-        %h5 Popular
+      = link_to raw('<h5>Popular</h5>'), projects_path, class: 'header'
       - @popular.each do |project| 
         = render partial: "projects/preview", locals: {project: project}
+      %br
+      %p.text-centered
+        = link_to raw('Popular Projects &raquo;'), projects_path, class: 'btn btn-default'  
+
     .col-md-4
-      .header 
-        %h5 Simple
+      = link_to raw('<h5>Simple</h5>'), projects_path, class: 'header'
       - @simple.each do |project| 
         = render partial: "projects/preview", locals: {project: project}        
+      %br
+      %p.text-centered
+        = link_to raw('Simple Projects &raquo;'), projects_path, class: 'btn btn-default'  
+        

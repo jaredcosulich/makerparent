@@ -11,7 +11,7 @@
           %p= @project.description
           %p
             - if @project.url?
-              = link_to "Visit Website", @project.url, class: 'btn btn-primary', target: '_blank'
+              = link_to raw('Visit Website &raquo;'), @project.url, class: 'btn btn-primary', target: '_blank'
       
       
         .admin_actions
@@ -28,20 +28,26 @@
       .panel-heading
         %h3.panel-title Materials
       .panel-body
-        Panel content
+        - if @project.materials.blank?
+          .text-centered
+            %h4 No Materials Listed Yet
+            %p 
+              If you've tried this project please add an experience report and provide some 
+              information about the materials involved and how long the project took.
+            %br
+            %p= link_to raw('&nbsp; Add Report'), new_project_experience_path(@project), class: 'btn btn-primary icon-plus-sign'
+          
 
   .experiences.col-md-8
     .panel.panel-default    
       .panel-heading
         %h3.panel-title Experience Reports
       .panel-body
-        
-        
         .add_experience.col-md-8.centered
           %h4 Have you tried this project?
           %p Share your experience. Positive or negative.
           %br
-          %p= link_to raw('&nbsp; Add Report'), new_project_experience_path(@project), class: 'btn btn-primary icon-plus-sign'
+          %p= link_to raw('&nbsp; Add Report'), new_project_experience_path(@project), class: 'btn btn-success btn-lg icon-plus-sign'
         
         
   #add-instructions.modal.fade{tabindex: -1, role: 'dialog', aria: {labelledby: 'instructions', hidden: 'true'}}

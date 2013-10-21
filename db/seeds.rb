@@ -27,7 +27,7 @@ Project.create({
 
 Project.create({
   title: "Create A Flip Book", 
-  description: "All you need is some paper and a pen and you can cr...", 
+  description: "All you need is some paper and a pen and you can create an animated scene that dances across the pages.", 
   url: "http://www.youtube.com/watch?v=iExiCGV7jzI&hd=1", 
   photo_file_name: "flipbook.jpg", 
   photo_content_type: "image/jpeg", 
