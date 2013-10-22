@@ -12,7 +12,8 @@ Project.create({
   url: "http://mattbgomez.com/fall-tree-art-using-handprints-and-fingerprints/", 
   photo_file_name: "tree_paint_project.jpg", 
   photo_content_type: "image/jpeg",
-  photo_file_size: 53638
+  photo_file_size: 53638,
+  estimated_simple: 3
 })
   
 Project.create({
@@ -22,7 +23,8 @@ Project.create({
   photo_file_name: "cardboard_box.jpg", 
   photo_content_type: "image/jpeg", 
   photo_file_size: 2508155, 
-  photo_updated_at: "2013-10-15 21:53:43"
+  photo_updated_at: "2013-10-15 21:53:43",
+  estimated_simple: 1
 })  
 
 Project.create({
@@ -31,7 +33,8 @@ Project.create({
   url: "http://www.youtube.com/watch?v=iExiCGV7jzI&hd=1", 
   photo_file_name: "flipbook.jpg", 
   photo_content_type: "image/jpeg", 
-  photo_file_size: 9867
+  photo_file_size: 9867,
+  estimated_simple: 2
 })
 
 Project.create({
@@ -40,7 +43,8 @@ Project.create({
   url: 'http://www.youtube.com/watch?v=skKmwT0EccE',  
   photo_file_name: "foxholeradio.jpg", 
   photo_content_type: "image/jpeg", 
-  photo_file_size: 9867
+  photo_file_size: 9867,
+  estimated_simple: 7
 })
   
 Project.create({
@@ -49,5 +53,6 @@ Project.create({
   url: "http://makezine.com/projects/make-34/heron-of-alexandria-and-the-gin-pole/", 
   photo_file_name: "heronpole.jpg", 
   photo_content_type: "image/jpeg", 
-  photo_file_size: 52591
+  photo_file_size: 52591,
+  estimated_simple: 9
 })  

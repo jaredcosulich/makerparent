@@ -1,5 +1,7 @@
 Makerparent::Application.routes.draw do
 
+  resources :bookmarks
+
   resources :projects do
     resources :instructions
     resources :experiences
