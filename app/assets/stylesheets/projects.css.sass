@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import 'mixins'
+
 .projects
   padding-top: 24px
   
@@ -40,21 +42,23 @@
       
       
   .search-projects
-    .search-box
-      border-top: 1px solid #eee
-      border-bottom: 1px solid #eee
-      border-right: 1px solid #eee
-      background-color: white
-      height: 120px
-      text-align: center
+    border: 1px solid #ccc
+    @include rounded(12px)    
+    
+    .search-boxes
+      overflow: hidden
+      .search-box
+        background-color: white
+        height: 102px
+        text-align: center
       
-      &:first-child
-        border-left: 1px solid #efefef
+        h4
+          padding-top: 12px
       
     .project_listing
       overflow: hidden
       padding: 24px 0
-      border-bottom: 1px solid #efefef
+      border-top: 1px solid #ccc
       
       img
         margin-right: 12px

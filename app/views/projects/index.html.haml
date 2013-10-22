@@ -5,17 +5,18 @@
 
 .container
   .search-projects.col-md-9
-    .row
-      .search-box.col-md-5
-        %h3.title-font KEYWORDS
-        .input-group
-          %input.form-control{type: 'text', placeholder: 'e.g. science, outdoors, paint'}
-          %span.input-group-btn
-            %button.btn.btn-default{type: 'button'} Search
-                
+    .search-boxes.col-md-12  
+      .col-md-5
+        .search-box
+          %h4.title-font KEYWORDS
+          .input-group
+            %input.form-control{type: 'text', placeholder: 'e.g. science, outdoors, paint'}
+            %span.input-group-btn
+              %button.btn.btn-default{type: 'button'} Search
+              
       .col-md-7
         .search-box.col-lg-4.col-md-6
-          %h3.title-font AGE
+          %h4.title-font AGE
           .btn-group
             %button.btn.btn-default{type: 'button'} All Ages
             %button.btn.btn-default.dropdown-toggle{type: 'button', data: {toggle: 'dropdown'}}
@@ -23,9 +24,10 @@
             %ul.dropdown-menu{role: 'menu'}
               %li
                 %a Action
-        
+      
         .search-box.col-lg-4.col-md-6
-          %h3.title-font 1ST SORT
+          %h4.title-font 
+            SORT
           .btn-group
             %button.btn.btn-default{type: 'button'} Popular
             %button.btn.btn-default.dropdown-toggle{type: 'button', data: {toggle: 'dropdown'}}
@@ -42,7 +44,7 @@
               
 
         .search-box.col-lg-4.visible-lg
-          %h3.title-font 2ND SORT
+          %h4.title-font SORT #2
           .btn-group
             %button.btn.btn-default{type: 'button'} Simple
             %button.btn.btn-default.dropdown-toggle{type: 'button', data: {toggle: 'dropdown'}}
@@ -57,17 +59,15 @@
               %li
                 %a Cost
     
-    - @projects.each do |project|
-
-      .project_listing
-        .pull-left
-          = link_to image_tag(project.photo(:square), class: 'img-rounded'), project
-        .info
-          %h4= link_to truncate(project.title, length: 36), project
-          %br
-          %p= truncate(project.description, length: 150)
-
-    = link_to 'New Project', new_project_path
+    .col-md-12
+      - @projects.each do |project|
+        .project_listing
+          .pull-left
+            = link_to image_tag(project.photo(:square), class: 'img-rounded'), project
+          .info
+            %h4= link_to truncate(project.title, length: 36), project
+            %br
+            %p= truncate(project.description, length: 150)
     
     
   .col-md-3.hidden-sm.hidden-xs
