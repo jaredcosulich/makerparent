@@ -3,7 +3,15 @@ class ProjectsController < ApplicationController
 
   # GET /projects
   def index
-    @projects = Project.all
+    limit = 10
+    @page = params.include?(:page) ? params[:page] : 0
+    @projects = Project.limit(limit).offset(@page * limit)
+    
+    if params.include?(:age)
+      age = params[:age].to_i
+      @projects = @projects.order("min_age > #{age + 2}, @ (#{age} - min_age) asc, min_age > #{age}") 
+    end
+       
   end
 
   # GET /projects/1

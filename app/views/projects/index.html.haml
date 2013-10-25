@@ -4,7 +4,7 @@
       %h2.title-font Explore Projects
 
 .container
-  .search-projects.col-md-9
+  .search-projects.col-md-10
     .search-boxes.col-md-12  
       .col-md-5
         .search-box
@@ -18,12 +18,16 @@
         .search-box.col-lg-4.col-md-6
           %h4.title-font AGE
           .btn-group
-            %button.btn.btn-default{type: 'button'} All Ages
+            %button.btn.btn-default{type: 'button'}
+              - if params.include?(:age) 
+                = "#{pluralize(params[:age], 'year')} old"
+              - else
+                = 'All Ages'
             %button.btn.btn-default.dropdown-toggle{type: 'button', data: {toggle: 'dropdown'}}
               %span.caret            
             %ul.dropdown-menu{role: 'menu'}
               - (1..15).each do |i|
-                %li
+                %li{class: ('active' if params[:age].to_i == i)}
                   %a= "#{pluralize(i, 'year')} old"
               %li
                 %a 16+ years old
@@ -71,8 +75,13 @@
             %h4= link_to truncate(project.title, length: 36), project
             %br
             %p= truncate(project.description, length: 150)
+            .stats
+              - if project.min_age
+                %p
+                  Suggested Age: 
+                  = project.min_age
+                  %small (rough estimate)
     
-    
-  .col-md-3.hidden-sm.hidden-xs
+  .col-md-2.hidden-sm.hidden-xs
     .skyscraper-ad
       &nbsp;

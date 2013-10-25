@@ -5,7 +5,7 @@
     = link_to raw('Contribute &raquo;'), new_project_path, class: 'btn btn-success btn-lg'
 
 .ages.centered.text-centered
-  %h4.title-font 
+  %h4.title-font.age-group 
     Find projects for specific ages: 
     .btn-group
       %button.btn.btn-default.dropdown-toggle{type: 'button', data: {toggle: 'dropdown'}}
@@ -19,7 +19,7 @@
         %li
           %a 16+ years old
     
-    %button.btn.btn-success{type: 'button'} Go &raquo;
+    %a.btn.btn-success.search-age{type: 'button', data: {path: projects_path}} Go &raquo;
 
 
 .container
