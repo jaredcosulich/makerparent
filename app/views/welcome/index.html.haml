@@ -2,7 +2,7 @@
   .container
     .buffer Project & activity ideas for parents & teachers from parents & teachers.
     = link_to raw('Explore &raquo;'), projects_path, class: 'btn btn-primary btn-lg'
-    = link_to raw('Contribute &raquo;'), projects_path, class: 'btn btn-success btn-lg'
+    = link_to raw('Contribute &raquo;'), new_project_path, class: 'btn btn-success btn-lg'
 
 .ages.centered.text-centered
   %h4.title-font 
@@ -13,11 +13,11 @@
         %span.caret
       
       %ul.age-dropdown.dropdown-menu{role: 'menu', aria: {labelledby: 'age-dropdown'}}
-        - (1..17).each do |i|
+        - (1..15).each do |i|
           %li{class: ('active' if i == 1)}
             %a= "#{pluralize(i, 'year')} old"
         %li
-          %a 18+ years old
+          %a 16+ years old
     
     %button.btn.btn-success{type: 'button'} Go &raquo;
 

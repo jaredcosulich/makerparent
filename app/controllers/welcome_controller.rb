@@ -2,8 +2,8 @@ class WelcomeController < ApplicationController
   def index
     # @hide_navbar = true
     
-    @recent = [Project.find_by_id(1), Project.find_by_id(1)]
-    @popular = [Project.find_by_id(4), Project.find_by_id(5)]
-    @simple = [Project.find_by_id(2), Project.find_by_id(3)]
+    @recent = Project.order('created_at desc').limit(3)
+    @popular = [Project.find_by_id(1)]
+    @simple = Project.where.not(id: (@recent + @popular).map(&:id)).order('average_simple asc').limit(3)
   end
 end

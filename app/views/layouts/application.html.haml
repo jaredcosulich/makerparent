@@ -4,7 +4,7 @@
     %title MakerParent
 
     =# stylesheet_link_tag    '//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/css/bootstrap.css'
-    = stylesheet_link_tag     '//getbootstrap.com/dist/css/bootstrap.min.css'
+    =# stylesheet_link_tag     '//getbootstrap.com/dist/css/bootstrap.min.css'
     = stylesheet_link_tag     '//fonts.googleapis.com/css?family=Muli'
 
     = javascript_include_tag "application", "data-turbolinks-track" => true
@@ -31,7 +31,7 @@
               %li{class: ('active' if controller.is_a?(ProjectsController))}
                 = link_to 'Explore', projects_path
               %li{class: ('active' if controller.is_a?(ProjectsController))}
-                = link_to 'Contribute', projects_path
+                = link_to 'Contribute', new_project_path
               /%li{class: ('active' if controller.is_a?(ProjectsController))}
               /  = link_to 'Chat', projects_path
               /%li{class: ('active' if controller.is_a?(ProjectsController))}
