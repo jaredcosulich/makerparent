@@ -3,7 +3,7 @@ class WelcomeController < ApplicationController
     # @hide_navbar = true
     
     @recent = Project.order('created_at desc').limit(3)
-    @popular = [Project.find_by_id(1)]
-    @simple = Project.where.not(id: (@recent + @popular).map(&:id)).order('average_simple asc').limit(3)
+    @simple = Project.order('average_simple asc, experiences_count desc').limit(3)
+    @popular = Project.where.not(id: (@recent + @simple).map(&:id)).order('experiences_count desc').limit(3)
   end
 end

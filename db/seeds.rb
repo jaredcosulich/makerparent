@@ -86,7 +86,37 @@ Project.create({
   photo_file_size: 52591,
   estimated_simple: 9,
   estimated_age: 13
-})  
+}) 
 
+Project.create({
+  title: "Sponge Blocks", 
+  description: "Building blocks made of sponges (cheap to make, hav...", 
+  url: "http://www.pinterest.com/pin/38421403043863053/", 
+  photo_file_name: "spongeblocks", 
+  photo_content_type: "application/octet-stream", 
+  photo_file_size: 184872, 
+  photo_updated_at: "2013-10-25 18:36:46", 
+  estimated_age: 2, 
+  estimated_cost: 5, 
+  estimated_simple: 2, 
+  min_age: 2, 
+  min_cost: 5, 
+  average_simple: 2
+})
+
+Project.create({
+  title: "Balloon Rockets", 
+  description: "Create balloon rockets that race across the room using just string, some tape and a balloon. Have races, cause collisions, etc. Lots of fun!", 
+  url: "http://discoverexplorelearn.com/balloon-rockets/", 
+  photo_file_name: "balloon_rockets.jpg", 
+  photo_content_type: "image/jpeg", 
+  photo_file_size: 833229, 
+  estimated_age: 4,
+  estimated_cost: 2, 
+  estimated_simple: 3, 
+  min_age: 4, 
+  min_cost: 2, 
+  average_simple: 3
+})
 
 
