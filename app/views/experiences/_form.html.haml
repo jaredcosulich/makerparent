@@ -1,37 +1,51 @@
-= form_for @experience do |f|
-  - if @experience.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@experience.errors.count, "error")} prohibited this experience from being saved:"
-      %ul
-        - @experience.errors.full_messages.each do |msg|
-          %li= msg
+= form_for experience_path([@project, @experience]) do |f|
+  .modal-dialog
+    .modal-content      
+      .modal-header
+        %h4 What was your experience with this project?
+        
+      .modal-body
+        - if @experience.errors.any?
+          #error_explanation
+            %h2= "#{pluralize(@experience.errors.count, "error")} prohibited this experience from being saved:"
+            %ul
+              - @experience.errors.full_messages.each do |msg|
+                %li= msg
 
-  .field
-    = f.label :summary
-    = f.text_field :summary
-  .field
-    = f.label :details
-    = f.text_area :details
-  .field
-    = f.label :user_id
-    = f.number_field :user_id
-  .field
-    = f.label :time
-    = f.number_field :time
-  .field
-    = f.label :cost
-    = f.number_field :cost
-  .field
-    = f.label :min_age
-    = f.number_field :min_age
-  .field
-    = f.label :max_age
-    = f.number_field :max_age
-  .field
-    = f.label :recommended
-    = f.check_box :recommended
-  .field
-    = f.label :simple
-    = f.number_field :simple
-  .actions
-    = f.submit 'Save'
+        .col-md-6        
+          .field
+            = f.label :summary
+            = f.text_field :summary
+          .field
+            = f.label :success, "Was the project a success?"
+            = f.check_box :success
+          .field
+            = f.label :details
+            = f.text_area :details
+
+        .col-md-6 
+          .field
+            = f.label :time
+            = f.number_field :time
+          .field
+            = f.label :cost
+            = f.number_field :cost
+          .field
+            = f.label :min_age
+            = f.number_field :min_age
+          .field
+            = f.label :max_age
+            = f.number_field :max_age
+          .field
+            = f.label :recommended
+            = f.check_box :recommended
+          .field
+            = f.label :simple
+            = f.number_field :simple
+      
+      .clearfix
+      .modal-footer
+        = f.submit 'Save Experience Report', class: 'btn btn-default'
+        %button.btn.btn-default{type: 'button', data: {dismiss: 'modal'}} Close
+
+      

@@ -25,26 +25,26 @@
 .container
   .project_lists.row
     .col-md-4
-      = link_to raw('<h5>Recent</h5>'), projects_path, class: 'header'
+      = link_to raw('<h5>Recent</h5>'), projects_path(sort: 'recent'), class: 'header'
       - @recent.each do |project| 
         = render partial: "projects/preview", locals: {project: project}
       %br
       %p.text-centered
-        = link_to raw('Recent Projects &raquo;'), projects_path, class: 'btn btn-default'  
+        = link_to raw('Recent Projects &raquo;'), projects_path(sort: 'recent'), class: 'btn btn-default'  
         
     .col-md-4
-      = link_to raw('<h5>Popular</h5>'), projects_path, class: 'header'
+      = link_to raw('<h5>Popular</h5>'), projects_path(sort: 'popular'), class: 'header'
       - @popular.each do |project| 
         = render partial: "projects/preview", locals: {project: project}
       %br
       %p.text-centered
-        = link_to raw('Popular Projects &raquo;'), projects_path, class: 'btn btn-default'  
+        = link_to raw('Popular Projects &raquo;'), projects_path(sort: 'popular'), class: 'btn btn-default'  
 
     .col-md-4
-      = link_to raw('<h5>Simple</h5>'), projects_path, class: 'header'
+      = link_to raw('<h5>Simple</h5>'), projects_path(sort: 'simple'), class: 'header'
       - @simple.each do |project| 
         = render partial: "projects/preview", locals: {project: project}        
       %br
       %p.text-centered
-        = link_to raw('Simple Projects &raquo;'), projects_path, class: 'btn btn-default'  
+        = link_to raw('Simple Projects &raquo;'), projects_path(sort: 'simple'), class: 'btn btn-default'  
         

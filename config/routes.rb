@@ -2,7 +2,7 @@ Makerparent::Application.routes.draw do
 
   resources :bookmarks
 
-  resources :projects do
+  resources :projects, shallow: true do
     resources :instructions
     resources :experiences
     resources :materials

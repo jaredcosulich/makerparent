@@ -52,7 +52,7 @@
             %h4 Have you tried this project?
             %p Share your experience. Positive or negative.
             %br
-            %p= link_to raw('&nbsp; Add Report'), new_project_experience_path(@project), class: 'btn btn-success btn-lg icon-plus-sign'
+            %a.icon-plus-sign.btn.btn-success.btn-lf{href: '#add-experience', data: {toggle: 'modal'}} &nbsp; Add Report
         
         
   #add-instructions.modal.fade{tabindex: -1, role: 'dialog', aria: {labelledby: 'instructions', hidden: 'true'}}
@@ -72,4 +72,8 @@
           = link_to 'Add Instructions', new_project_instruction_path(@project), class: 'btn btn-default', type: 'button'
           %button.btn.btn-default{type: 'button', data: {dismiss: 'modal'}} Close
 
+  #add-experience.modal.fade{tabindex: -1, role: 'dialog', aria: {labelledby: 'experience', hidden: 'true'}}
+    = render :partial => 'experiences/form'
 
+
+    

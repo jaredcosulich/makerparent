@@ -12,10 +12,21 @@ class ProjectsController < ApplicationController
       @projects = @projects.order("min_age > #{age + 2}, @ (#{age} - min_age) asc, min_age > #{age}") 
     end
        
+    if params.include?(:sort)
+      if params[:sort] == 'popular'
+        @projects = @projects.order('experiences_count desc')
+      elsif params[:sort] == 'simple'
+        @projects = @projects.order('average_simple asc')
+      elsif params[:sort] == 'recent'
+        @projects = @projects.order('created_at desc')
+      end
+    end   
+    
   end
 
   # GET /projects/1
   def show
+    @experience = Experience.new
   end
 
   # GET /projects/new

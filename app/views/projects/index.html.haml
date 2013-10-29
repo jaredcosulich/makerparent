@@ -81,6 +81,12 @@
                   Suggested Age: 
                   = project.min_age
                   %small (rough estimate)
+              - if project.average_simple
+                %p
+                  Simplicity:
+                  = project.estimated_simple
+                  %small= "(#{project.simple_description})"
+                  
     
   .col-md-2.hidden-sm.hidden-xs
     .skyscraper-ad
