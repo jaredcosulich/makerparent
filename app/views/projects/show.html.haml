@@ -49,10 +49,28 @@
           %h3.panel-title Experience Reports
         .panel-body
           - @project.experiences.each do |experience|
-            .experience
+            .experience.well
+              = image_tag('me.jpg')
               %p= experience.details
+              %p
+                Success
+                = experience.success
+              %p
+                Recommended
+                = experience.recommended
+              %p
+                Simple
+                = experience.simple
+              %p
+                Cost
+                = experience.cost
+              %p
+                Min Age
+                = experience.min_age
+                
+              
         
-          .add_experience.col-md-8.centered
+          .add_experience.col-md-8.centered.well
             %h4 Have you tried this project?
             %p Share your experience. Positive or negative.
             %br
