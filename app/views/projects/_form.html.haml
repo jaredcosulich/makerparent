@@ -6,19 +6,19 @@
         - @project.errors.full_messages.each do |msg|
           %li= msg
 
-  .form_group
+  .form-group
     = f.label :title
     = f.text_field :title, class: 'form-control', placeholder: 'Example: Create A Flip Book'
-  .form_group
+  .form-group
     = f.label :url, 'Website or Video Link'
     = f.text_field :url, class: 'form-control', placeholder: 'Example: http://www.youtube.com/watch?v=iExiCGV7jzI&hd=1'
-  .form_group
+  .form-group
     = f.label :description
     = f.text_area :description, class: 'form-control', placeholder: 'Example: Make an animated character dance with this simple animation technique.'
-  .form_group
+  .form-group
     = f.label :photo
     = f.file_field :photo, class: 'form-control'
-  .form_group
+  .form-group
     = f.label :estimated_simple, 'How simple is this project?'
     = f.select :estimated_simple, 
                [['1 - Very simple, you can do it with materials lying around the house.', 1],
@@ -34,17 +34,17 @@
 
 
 
-  .form_group.col-md-5
+  .form-group.col-md-5
     = f.label :estimated_cost, raw('Rough Cost <small>(optional)</small>')
     .input-group
       %span.input-group-addon $
       = f.number_field :estimated_cost, class: 'form-control'
-  .form_group.col-md-6.col-md-offset-1
+  .form-group.col-md-6.col-md-offset-1
     = f.label :estimated_age, raw('Minimum Age <small>(just an estimate)</small>')
     .input-group
       = f.number_field :estimated_age, class: 'form-control'
       %span.input-group-addon years old
-  .actions.form_group
+  .actions.form-group
     = f.submit 'Save', class: 'btn btn-default'
     = link_to 'Cancel', (@project.new_record? ? projects_path : project_path(@project)), class: 'btn btn-default'
       

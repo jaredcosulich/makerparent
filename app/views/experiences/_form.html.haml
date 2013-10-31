@@ -3,6 +3,7 @@
     .modal-content      
       .modal-header
         %h4 What was your experience with this project?
+        %p Fill in as much or as little as you want.
         
       .modal-body
         - if @experience.errors.any?
@@ -12,37 +13,61 @@
               - @experience.errors.full_messages.each do |msg|
                 %li= msg
 
-        .col-md-6        
-          .field
-            = f.label :summary
-            = f.text_field :summary
-          .field
-            = f.label :success, "Was the project a success?"
-            = f.check_box :success
-          .field
-            = f.label :details
-            = f.text_area :details
 
-        .col-md-6 
-          .field
-            = f.label :time
-            = f.number_field :time
-          .field
-            = f.label :cost
-            = f.number_field :cost
-          .field
-            = f.label :min_age
-            = f.number_field :min_age
-          .field
-            = f.label :max_age
-            = f.number_field :max_age
-          .field
-            = f.label :recommended
-            = f.check_box :recommended
-          .field
-            = f.label :simple
-            = f.number_field :simple
-      
+        .form-group
+          = f.label :success, "Was the project a success?"
+          = f.hidden_field :success
+          &nbsp; 
+          %a.btn.btn-default.btn-checkbox Yes
+          &nbsp;
+          %a.btn.btn-default.btn-checkbox No
+
+        .form-group
+          = f.label :recommend, "Would you recommend this project to others?"
+          = f.hidden_field :recommend
+          &nbsp; 
+          %a.btn.btn-default.btn-checkbox Yes
+          &nbsp;
+          %a.btn.btn-default.btn-checkbox No
+
+        .form-group
+          = f.label :min_age, "How old was the youngest child working on the project?"
+          &nbsp; 
+          = f.number_field :min_age, style: 'width: 54px; display: inline-block;', class: 'form-control'
+          
+        .form-group
+          = f.label :simple, 'How simple was the project?'
+          = f.select :simple, 
+                     [['1 - Very simple, you can do it with materials lying around the house.', 1],
+                     ['2', 2], ['3', 3], 
+                     ['4 - Uses materials that can be easily purchased, possibly a little messy.', 4], 
+                     ['5', 5], ['6', 6], 
+                     ['7 - Requires some difficult to find or expensive materials or takes a while to do.', 7], 
+                     ['8'], ['9'], 
+                     ['10 - Very challenging and potentially expensive. Requires technical skills.']], 
+                     {}, class: 'form-control'
+          
+        .form-group
+          = f.label :cost, 'Roughly how much did it cost to do the project?'
+          &nbsp; 
+          = f.number_field :cost, style: 'width: 90px; display: inline-block;', class: 'form-control'
+
+        .form-group
+          = f.label :time, 'Roughly how much time did it take to do the project'
+          = f.select :time, 
+                     [['Less than an hour', 45],
+                     ['A few hours', 180],
+                     ['Half a day', 300],
+                     ['A day', 600],
+                     ['A weekend', 1500],
+                     ['A week', 4500],
+                     ['A few weeks', 1800],
+                     ['A few months+', 5400]], 
+                     {}, class: 'form-control'
+        .form-group
+          = f.label :details, 'What was your overall experience with this project?'
+          = f.text_area :details, class: 'form-control'
+                
       .clearfix
       .modal-footer
         = f.submit 'Save Experience Report', class: 'btn btn-default'

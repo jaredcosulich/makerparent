@@ -5,8 +5,9 @@
 $( ->
   $("#add-#{info[1]}").modal() if (info = location.href.match(/dialog=(\w+)/))
 
-  $('#tabs a').bind 'click', (e) ->
-    e.preventDefault()
-    $(this).tab('show')
+  $('.form-group .btn-checkbox').bind 'click', ->
+    formGroup = $(this).closest('.form-group')
+    formGroup.find('.btn-checkbox').removeClass('btn-primary')
+    $(this).addClass('btn-primary')
 
 )

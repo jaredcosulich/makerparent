@@ -6,15 +6,15 @@
         - @instruction.errors.full_messages.each do |msg|
           %li= msg
 
-  .form_group
+  .form-group
     = f.label :text
     = f.text_area :text, class: 'form-control'
-  .form_group
+  .form-group
     = f.label :position
     = f.number_field :position, class: 'form-control'
-  .form_group
+  .form-group
     = f.label :image
     = f.file_field :image, class: 'form-control'
-  .actions.form_group
+  .actions.form-group
     = f.submit 'Save', class: 'btn btn-default'
     = link_to 'Cancel', @project, class: 'btn btn-default'
