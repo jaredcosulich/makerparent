@@ -21,10 +21,11 @@ class ExperiencesController < ApplicationController
 
   # POST /experiences
   def create
-    @experience = Experience.new(experience_params)
+    @project = Project.find(params[:project_id])
+    @experience = @project.experiences.new(experience_params)
 
     if @experience.save
-      redirect_to @experience, notice: 'Experience was successfully created.'
+      redirect_to @project, notice: 'Experience was successfully created.'
     else
       render action: 'new'
     end
@@ -53,6 +54,6 @@ class ExperiencesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def experience_params
-      params.require(:experience).permit(:summary, :details, :user_id, :time, :cost, :min_age, :max_age, :recommended, :simple)
+      params.require(:experience).permit(:details, :user_id, :success, :time, :cost, :min_age, :recommended, :simple)
     end
 end

@@ -119,4 +119,27 @@ Project.create({
   average_simple: 3
 })
 
+Experience.create({
+  details: "We literally keep a few boxes from our diaper deliveries folded up in the corner of the living room. We break them out every now and then and use them as tunnels with our daughter. She loves it, although more recently she seems to enjoy ordering us to go through the tunnels as much or more than going through them herself :)", 
+  success: true,
+  project_id: 2, 
+  user_id: nil, 
+  time: 45, 
+  cost: 0, 
+  min_age: 1, 
+  recommended: true, 
+  simple: 1
+})
+
+
+
+
+
+
+
+
+
+
+
+
 

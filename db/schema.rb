@@ -24,13 +24,13 @@ ActiveRecord::Schema.define(version: 20131022041756) do
   end
 
   create_table "experiences", force: true do |t|
-    t.string   "summary"
     t.text     "details"
+    t.boolean  "success"
+    t.integer  "project_id"
     t.integer  "user_id"
     t.integer  "time"
     t.integer  "cost"
     t.integer  "min_age"
-    t.integer  "max_age"
     t.boolean  "recommended"
     t.integer  "simple"
     t.datetime "created_at"

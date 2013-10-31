@@ -1,4 +1,4 @@
-= form_for experience_path([@project, @experience]) do |f|
+= form_for [@project, @experience] do |f|
   .modal-dialog
     .modal-content      
       .modal-header
@@ -23,8 +23,8 @@
           %a.btn.btn-default.btn-checkbox No
 
         .form-group
-          = f.label :recommend, "Would you recommend this project to others?"
-          = f.hidden_field :recommend
+          = f.label :recommended, "Would you recommend this project to others?"
+          = f.hidden_field :recommended
           &nbsp; 
           %a.btn.btn-default.btn-checkbox Yes
           &nbsp;

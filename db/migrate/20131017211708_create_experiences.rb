@@ -3,6 +3,7 @@ class CreateExperiences < ActiveRecord::Migration
     create_table :experiences do |t|
       t.text :details
       t.boolean :success
+      t.integer :project_id
       t.integer :user_id
       t.integer :time
       t.integer :cost

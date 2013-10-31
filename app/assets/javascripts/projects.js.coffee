@@ -9,5 +9,5 @@ $( ->
     formGroup = $(this).closest('.form-group')
     formGroup.find('.btn-checkbox').removeClass('btn-primary')
     $(this).addClass('btn-primary')
-
+    formGroup.find('input').val((if $(this).html().toLowerCase() == 'no' then 0 else 1))
 )

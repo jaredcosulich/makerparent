@@ -48,6 +48,10 @@
         .panel-heading
           %h3.panel-title Experience Reports
         .panel-body
+          - @project.experiences.each do |experience|
+            .experience
+              %p= experience.details
+        
           .add_experience.col-md-8.centered
             %h4 Have you tried this project?
             %p Share your experience. Positive or negative.
