@@ -6,15 +6,15 @@
 .container
   .search-projects.col-md-10
     .search-boxes.col-md-12  
-      .col-md-5
-        .search-box
-          %h4.title-font KEYWORDS
-          .input-group
-            %input.form-control{type: 'text', placeholder: 'e.g. science, outdoors, paint'}
-            %span.input-group-btn
-              %button.btn.btn-default{type: 'button'} Search
+      /.col-md-5
+      /  .search-box
+      /    %h4.title-font KEYWORDS
+      /    .input-group
+      /      %input.form-control{type: 'text', placeholder: 'e.g. science, outdoors, paint'}
+      /      %span.input-group-btn
+      /        %button.btn.btn-default{type: 'button'} Search
               
-      .col-md-7
+      .col-md-12
         .search-box.col-lg-4.col-md-6
           %h4.title-font AGE
           .btn-group
@@ -69,25 +69,33 @@
     .col-md-12
       - @projects.each do |project|
         .project_listing
-          .pull-left
+          .col-md-2
             = link_to image_tag(project.photo(:square), class: 'img-rounded'), project
-          .info
-            %h4= link_to truncate(project.title, length: 36), project
-            %br
-            %p= truncate(project.description, length: 150)
-            .stats
+          .stats.col-md-10
+            .col-md-12
+              %h4= link_to truncate(project.title, length: 36), project            
+            
+            .col-md-5
               - if project.min_age
                 %p
                   Suggested Age: 
                   = project.min_age
-                  %small (rough estimate)
               - if project.average_simple
                 %p
                   Simplicity:
                   = project.estimated_simple
+                  %br
                   %small= "(#{project.simple_description})"
+            .info.col-md-7
+              %p= truncate(project.description, length: 150)
+
                   
     
   .col-md-2.hidden-sm.hidden-xs
     .skyscraper-ad
-      &nbsp;
+      <div id='div-gpt-ad-1383843654364-1' style='width:300px; height:250px;'>
+      <script type='text/javascript'>
+      googletag.cmd.push(function() { googletag.display('div-gpt-ad-1383843654364-1'); });
+      </script>
+      </div>
+      

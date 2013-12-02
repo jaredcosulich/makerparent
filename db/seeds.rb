@@ -90,7 +90,7 @@ Project.create({
 
 Project.create({
   title: "Sponge Blocks", 
-  description: "Building blocks made of sponges (cheap to make, hav...", 
+  description: "Building blocks made of sponges (cheap to make, create different shapes and colors, easy to stack and 'cling' to each other, won't hurt when they fall, etc).", 
   url: "http://www.pinterest.com/pin/38421403043863053/", 
   photo_file_name: "spongeblocks", 
   photo_content_type: "application/octet-stream", 

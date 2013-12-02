@@ -15,6 +15,31 @@
     %meta{name: "viewport", content: "width=device-width, initial-scale=1.0"}
     %meta{name: "description", content: "Project and activity ideas for parents and teachers from parents and teachers."}
     = csrf_meta_tags
+    
+    <script type='text/javascript'>
+    var googletag = googletag || {};
+    googletag.cmd = googletag.cmd || [];
+    (function() {
+    var gads = document.createElement('script');
+    gads.async = true;
+    gads.type = 'text/javascript';
+    var useSSL = 'https:' == document.location.protocol;
+    gads.src = (useSSL ? 'https:' : 'http:') + 
+    '//www.googletagservices.com/tag/js/gpt.js';
+    var node = document.getElementsByTagName('script')[0];
+    node.parentNode.insertBefore(gads, node);
+    })();
+    </script>
+
+    <script type='text/javascript'>
+    googletag.cmd.push(function() {
+    googletag.defineSlot('/1006691/cw_box', [300, 250], 'div-gpt-ad-1383843654364-0').addService(googletag.pubads());
+    googletag.defineSlot('/1006691/cw_skyscraper', [160, 600], 'div-gpt-ad-1383843654364-1').addService(googletag.pubads());
+    googletag.pubads().enableSingleRequest();
+    googletag.enableServices();
+    });
+    </script>
+
 
   %body
     - unless @hide_navbar
