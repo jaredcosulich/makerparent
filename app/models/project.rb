@@ -11,30 +11,31 @@ class Project < ActiveRecord::Base
 
   before_save :calculate_averages
   
+  LONG_ESTIMATED_SIMPLE_DESCRIPTIONS = [
+    'Extremely simple, requires just a few household items',
+    '', '', '',
+    'May require unusual materials or be a little messy',
+    '', '', '', '',
+    'Very challenging and/or expensive. May require technical skills'
+  ]
   
-  def simple_description
-    case estimated_simple
-      when 1
-        'very simple, easy to do using household items'
-      when 2
-        'very simple, should only require household items'
-      when 3
-        'may require purchasing some materials'
-      when 4
-        'uses materials that can be easily purchased, possibly a little messy'
-      when 5
-        'may require unusual materials or be a little messy'
-      when 6
-        'may require unusual materials or be a little messy'
-      when 7
-        'requires some difficult to find or expensive materials or takes a while to do.'
-      when 8
-        'requires some difficult to find or expensive materials or takes a while to do.'
-      when 9
-        'requires some difficult to find or expensive materials or takes a while to do.'
-      else
-        'very challenging and potentially expensive. Requires technical skills.'
-    end
+  ESTIMATED_SIMPLE_DESCRIPTIONS = [
+    'Very Simple',
+    'Very Simple', 
+    'Simple', 
+    'Simple',
+    'Mildly Challenging',
+    'Mildly Challenging', 
+    'Challenging', 
+    'Challenging', 
+    'Very Challenging',
+    'Very Challenging'
+  ]
+  
+  def simple_description(long=false)
+    return '' unless estimated_simple
+    descriptions = long ? LONG_ESTIMATED_SIMPLE_DESCRIPTIONS : ESTIMATED_SIMPLE_DESCRIPTIONS
+    descriptions[estimated_simple]
   end  
   
   private

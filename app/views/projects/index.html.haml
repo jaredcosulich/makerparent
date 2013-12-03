@@ -81,11 +81,7 @@
                   Suggested Age: 
                   = project.min_age
               - if project.average_simple
-                %p
-                  Simplicity:
-                  = project.estimated_simple
-                  %br
-                  %small= "(#{project.simple_description})"
+                %p= "#{project.simple_description} (#{project.estimated_simple})"
             .info.col-md-7
               %p= truncate(project.description, length: 150)
 

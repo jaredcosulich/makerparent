@@ -119,6 +119,21 @@ Project.create({
   average_simple: 3
 })
 
+Project.create({
+  title: "Frozen Bubbles",
+  description: "Create a bubble in freezing temperatures and watch it freeze in to a miniature crystal ball and then shatter!",
+  url: "http://sciencemadefun.net/blog/?p=348",
+  photo_file_name: "frozen_bubble.jpg",
+  photo_content_type: "image/jpeg",
+  photo_file_size: 17332,
+  estimated_age: 6,
+  estimated_cost: 1,
+  estimated_simple: 4,
+  min_age: 6,
+  min_cost: 1,
+  average_simple: 4
+})
+
 Experience.create({
   details: "We literally keep a few boxes from our diaper deliveries folded up in the corner of the living room. We break them out every now and then and use them as tunnels with our daughter. She loves it, although more recently she seems to enjoy ordering us to go through the tunnels as much or more than going through them herself :)", 
   success: true,

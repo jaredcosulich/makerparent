@@ -20,19 +20,7 @@
     = f.file_field :photo, class: 'form-control'
   .form-group
     = f.label :estimated_simple, 'How simple is this project?'
-    = f.select :estimated_simple, 
-               [['1 - Very simple, you can do it with materials lying around the house.', 1],
-               ['2', 2], ['3', 3], 
-               ['4 - Uses materials that can be easily purchased, possibly a little messy.', 4], 
-               ['5', 5], ['6', 6], 
-               ['7 - Requires some difficult to find or expensive materials or takes a while to do.', 7], 
-               ['8'], ['9'], 
-               ['10 - Very challenging and potentially expensive. Requires technical skills.']], 
-               {}, class: 'form-control'
-          
-          
-
-
+    = f.select :estimated_simple, (1..10).map { |i| ["#{i} - #{Project::LONG_ESTIMATED_SIMPLE_DESCRIPTIONS[i-1]}", i]}, {}, class: 'form-control'
 
   .form-group.col-md-5
     = f.label :estimated_cost, raw('Rough Cost <small>(optional)</small>')
