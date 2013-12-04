@@ -14,12 +14,13 @@
               = link_to raw('Visit Website &raquo;'), @project.url, class: 'btn btn-primary', target: '_blank'
       
       
-        .admin_actions
-          %a.icon-edit{href: (@project.instructions.blank? ? '#add-instructions' : '#instructions'), data: {toggle: 'modal'}} &nbsp;Instructions
-          &nbsp;|&nbsp;
-          = link_to ' Edit', edit_project_path(@project), class: 'icon-pencil'
-          &nbsp;|&nbsp;
-          = link_to ' Delete', @project, method: 'delete', class: 'icon-trash'
+        - if user_signed_in? && current_user == @project.user
+          .admin_actions
+            %a.icon-edit{href: (@project.instructions.blank? ? '#add-instructions' : '#instructions'), data: {toggle: 'modal'}} &nbsp;Instructions
+            &nbsp;|&nbsp;
+            = link_to ' Edit', edit_project_path(@project), class: 'icon-pencil'
+            &nbsp;|&nbsp;
+            = link_to ' Delete', @project, method: 'delete', class: 'icon-trash'
       
   .col-md-4
     .square-ad
@@ -45,7 +46,18 @@
                 information about the materials involved and how long the project took.
               %br
               %p= link_to raw('&nbsp; Add Report'), new_project_experience_path(@project), class: 'btn btn-primary icon-plus-sign'
-          
+         
+      - if @project.experiences.length > 1
+        %br
+        %br
+        %br
+        .skyscraper-ad
+          <div id='div-gpt-ad-1383843654364-1' style='width:300px; height:250px;'>
+          <script type='text/javascript'>
+          googletag.cmd.push(function() { googletag.display('div-gpt-ad-1383843654364-1'); });
+          </script>
+          </div>
+
 
     .experiences.col-md-8
       .panel.panel-default    
@@ -63,6 +75,9 @@
                 %h4.title-font Experience Details
               
                 %p
+                  My child is
+                  = pluralize(experience.min_age, 'year old', 'years old')
+                %p
                   - if experience.success
                     This project was a success.
                   - else
@@ -79,19 +94,33 @@
                   %p 
                     It cost us 
                     = number_to_currency(experience.cost)
-                %p
-                  My child is
-                  = pluralize(experience.min_age, 'year old', 'years old')
+
+                - if experience.time
+                  %p 
+                    It took us 
+                    = distance_of_time_in_words(experience.time)
               
-              .photos.col-lg-6
-                %h4 Experience Photos
+              - if experience.experience_photos.present?
+                .photos.col-lg-6
+                  %h4.title-font Experience Photos
+                
+              - if user_signed_in? && current_user == experience.user
+                .admin_actions
+                  %a.icon-edit{href: (@project.instructions.blank? ? '#add-photos' : '#photos'), data: {toggle: 'modal'}} &nbsp;Edit Photos
+                  &nbsp;|&nbsp;
+                  = link_to ' Edit', edit_project_path(@project), class: 'icon-pencil'
+                  &nbsp;|&nbsp;
+                  = link_to ' Delete', @project, method: 'delete', class: 'icon-trash'
+              
         
           .add_experience.col-md-8.centered.well
             %h4 Have you tried this project?
             %p Share your experience. Positive or negative.
             %br
-            %a.icon-plus-sign.btn.btn-success.btn-lf{href: '#add-experience', data: {toggle: 'modal'}} &nbsp; Add Report
-        
+            - if user_signed_in?
+              %a.icon-plus-sign.btn.btn-success.btn-lf{href: '#add-experience', data: {toggle: 'modal'}} &nbsp; Add Report
+            - else
+              = link_to 'Add Report', new_user_session_path, class: 'icon-plus-sign btn btn-success btn-lf'
         
   #add-instructions.modal.fade{tabindex: -1, role: 'dialog', aria: {labelledby: 'instructions', hidden: 'true'}}
     .modal-dialog
@@ -110,8 +139,27 @@
           = link_to 'Add Instructions', new_project_instruction_path(@project), class: 'btn btn-default', type: 'button'
           %button.btn.btn-default{type: 'button', data: {dismiss: 'modal'}} Close
 
-  #add-experience.modal.fade{tabindex: -1, role: 'dialog', aria: {labelledby: 'experience', hidden: 'true'}}
-    = render :partial => 'experiences/form'
+
+  #add-experience_photos.modal.fade{tabindex: -1, role: 'dialog', aria: {labelledby: 'experience_photos', hidden: 'true'}}
+    .modal-dialog
+      .modal-content      
+        .modal-header
+          %h4 Add Photos Of Your Experience
+        .modal-body
+          %br
+          %p
+            %h5 Would you like to add photos of your experience doing this project?
+            %br
+            = cl_image_upload_tag(:item_id, upload_options.merge(html: {multiple: 'true'}))
+          %br
+          %p
+            You can also do so later.
+        .modal-footer
+          %button.btn.btn-default{type: 'button', data: {dismiss: 'modal'}} Close
+
+  - if user_signed_in?
+    #add-experience.modal.fade{tabindex: -1, role: 'dialog', aria: {labelledby: 'experience', hidden: 'true'}}
+      = render :partial => 'experiences/form'
 
 
     

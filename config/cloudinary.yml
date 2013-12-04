@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: makerparent
+  api_key: '476151187245418'
+  api_secret: zENeirdPf635Te67APqX671B8js
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: makerparent
+  api_key: '476151187245418'
+  api_secret: zENeirdPf635Te67APqX671B8js
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: makerparent
+  api_key: '476151187245418'
+  api_secret: zENeirdPf635Te67APqX671B8js
+  enhance_image_tag: true
+  static_image_support: false

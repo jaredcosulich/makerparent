@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Experience:
+  = @experience_photo.experience_id
+%p
+  %b Cloudinary:
+  = @experience_photo.cloudinary_id
+%p
+  %b Href small:
+  = @experience_photo.href_small
+%p
+  %b Href large:
+  = @experience_photo.href_large
+%p
+  %b Date taken:
+  = @experience_photo.date_taken
+
+= link_to 'Edit', edit_experience_photo_path(@experience_photo)
+\|
+= link_to 'Back', experience_photos_path

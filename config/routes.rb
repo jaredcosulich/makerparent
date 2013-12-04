@@ -1,5 +1,7 @@
 Makerparent::Application.routes.draw do
 
+  resources :experience_photos
+
   devise_for :users
   resources :bookmarks
 

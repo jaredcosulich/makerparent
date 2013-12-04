@@ -3,7 +3,6 @@
     .modal-content      
       .modal-header
         %h4 What was your experience with this project?
-        %p Fill in as much or as little as you want.
         
       .modal-body
         - if @experience.errors.any?
@@ -59,7 +58,7 @@
         .form-group
           = f.label :details, 'What was your overall experience with this project?'
           = f.text_area :details, class: 'form-control'
-                
+          
       .clearfix
       .modal-footer
         = f.submit 'Save Experience Report', class: 'btn btn-default'

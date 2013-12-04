@@ -1,0 +1,27 @@
+%h1 Listing experience_photos
+
+%table
+  %tr
+    %th Experience
+    %th Cloudinary
+    %th Href small
+    %th Href large
+    %th Date taken
+    %th
+    %th
+    %th
+
+  - @experience_photos.each do |experience_photo|
+    %tr
+      %td= experience_photo.experience_id
+      %td= experience_photo.cloudinary_id
+      %td= experience_photo.href_small
+      %td= experience_photo.href_large
+      %td= experience_photo.date_taken
+      %td= link_to 'Show', experience_photo
+      %td= link_to 'Edit', edit_experience_photo_path(experience_photo)
+      %td= link_to 'Destroy', experience_photo, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Experience photo', new_experience_photo_path

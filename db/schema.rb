@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131101040912) do
+ActiveRecord::Schema.define(version: 20131204200024) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,16 @@ ActiveRecord::Schema.define(version: 20131101040912) do
   create_table "bookmarks", force: true do |t|
     t.integer  "user_id"
     t.integer  "project_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "experience_photos", force: true do |t|
+    t.integer  "experience_id"
+    t.string   "cloudinary_id"
+    t.string   "href_small"
+    t.string   "href_large"
+    t.datetime "date_taken"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

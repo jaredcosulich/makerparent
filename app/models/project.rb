@@ -1,5 +1,6 @@
 class Project < ActiveRecord::Base
 
+  belongs_to :user
   has_many :instructions
   has_many :materials
   has_many :experiences, counter_cache: true

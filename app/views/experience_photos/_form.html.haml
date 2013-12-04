@@ -1,0 +1,25 @@
+= form_for @experience_photo do |f|
+  - if @experience_photo.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@experience_photo.errors.count, "error")} prohibited this experience_photo from being saved:"
+      %ul
+        - @experience_photo.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :experience_id
+    = f.number_field :experience_id
+  .field
+    = f.label :cloudinary_id
+    = f.text_field :cloudinary_id
+  .field
+    = f.label :href_small
+    = f.text_field :href_small
+  .field
+    = f.label :href_large
+    = f.text_field :href_large
+  .field
+    = f.label :date_taken
+    = f.datetime_select :date_taken
+  .actions
+    = f.submit 'Save'
