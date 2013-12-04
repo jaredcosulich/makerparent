@@ -56,23 +56,35 @@
             .experience.well
               = image_tag('me.jpg')
               %p= experience.details
-              %p
-                Success
-                = experience.success
-              %p
-                Recommended
-                = experience.recommended
-              %p
-                Simple
-                = experience.simple
-              %p
-                Cost
-                = experience.cost
-              %p
-                Min Age
-                = experience.min_age
-                
               
+              .clearfix
+              
+              .details.col-lg-6
+                %h4.title-font Experience Details
+              
+                %p
+                  - if experience.success
+                    This project was a success.
+                  - else
+                    This project did not turn out the way we expected.
+                %p
+                  - if experience.recommended
+                    I'd recommend this project.
+                  - else
+                    I can't recommend this project.
+                - if experience.simple
+                  %p= "This project was #{experience.simple_description.downcase} (#{experience.simple})"
+              
+                - if experience.cost
+                  %p 
+                    It cost us 
+                    = number_to_currency(experience.cost)
+                %p
+                  My child is
+                  = pluralize(experience.min_age, 'year old', 'years old')
+              
+              .photos.col-lg-6
+                %h4 Experience Photos
         
           .add_experience.col-md-8.centered.well
             %h4 Have you tried this project?
