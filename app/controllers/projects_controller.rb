@@ -8,11 +8,6 @@ class ProjectsController < ApplicationController
     @page = params.include?(:page) ? params[:page] : 0
     @projects = Project.limit(limit).offset(@page * limit)
     
-    if params.include?(:age)
-      age = params[:age].to_i
-      @projects = @projects.order("min_age > #{age + 2}, @ (#{age} - min_age) asc, min_age > #{age}") 
-    end
-       
     if params.include?(:sort)
       if params[:sort] == 'popular'
         @projects = @projects.order('experiences_count desc')
@@ -22,6 +17,11 @@ class ProjectsController < ApplicationController
         @projects = @projects.order('created_at desc')
       end
     end   
+
+    if params.include?(:age)
+      age = params[:age].to_i
+      @projects = @projects.order("min_age > #{age + 2}, @ (#{age} - min_age) asc, min_age > #{age}") 
+    end       
     
   end
 

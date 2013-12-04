@@ -5,84 +5,88 @@
 
 .container
   .search-projects.col-md-10
-    .search-boxes.col-md-12  
-      /.col-md-5
-      /  .search-box
-      /    %h4.title-font KEYWORDS
-      /    .input-group
-      /      %input.form-control{type: 'text', placeholder: 'e.g. science, outdoors, paint'}
-      /      %span.input-group-btn
-      /        %button.btn.btn-default{type: 'button'} Search
-              
-      .col-md-12
-        .search-box.col-lg-4.col-md-6
-          %h4.title-font AGE
-          .btn-group
-            %button.btn.btn-default{type: 'button'}
-              - if params.include?(:age) 
-                = "#{pluralize(params[:age], 'year')} old"
-              - else
-                = 'All Ages'
-            %button.btn.btn-default.dropdown-toggle{type: 'button', data: {toggle: 'dropdown'}}
-              %span.caret            
-            %ul.dropdown-menu{role: 'menu'}
-              - (1..15).each do |i|
-                %li{class: ('active' if params[:age].to_i == i)}
-                  %a= "#{pluralize(i, 'year')} old"
-              %li
-                %a 16+ years old
-      
-        .search-box.col-lg-4.col-md-6
-          %h4.title-font 
-            SORT
-          .btn-group
-            %button.btn.btn-default{type: 'button'} Popular
-            %button.btn.btn-default.dropdown-toggle{type: 'button', data: {toggle: 'dropdown'}}
-              %span.caret            
-            %ul.dropdown-menu{role: 'menu'}
-              %li
-                %a Popular
-              %li
-                %a Recent
-              %li
-                %a Simple
-              %li
-                %a Cost
-              
+    /.search-boxes.col-md-12  
+    /.col-md-5
+    /  .search-box
+    /    %h4.title-font KEYWORDS
+    /    .input-group
+    /      %input.form-control{type: 'text', placeholder: 'e.g. science, outdoors, paint'}
+    /      %span.input-group-btn
+    /        %button.btn.btn-default{type: 'button'} Search
+          
+    / .col-md-12
 
-        .search-box.col-lg-4.visible-lg
-          %h4.title-font SORT #2
-          .btn-group
-            %button.btn.btn-default{type: 'button'} Simple
-            %button.btn.btn-default.dropdown-toggle{type: 'button', data: {toggle: 'dropdown'}}
-              %span.caret            
-            %ul.dropdown-menu{role: 'menu'}
-              %li
-                %a Popular
-              %li
-                %a Recent
-              %li
-                %a Simple
-              %li
-                %a Cost
+    .search-boxes
+      .search-box.col-sm-3.col-xs-5
+        %h4.title-font AGE
+        .btn-group
+          %button.btn.btn-default.age-selection{type: 'button', data: {toggle: 'dropdown'}}
+            - if params.include?(:age) 
+              = "#{pluralize(params[:age], 'year')} old"
+            - else
+              = 'All Ages'
+          %button.btn.btn-default.dropdown-toggle{type: 'button', data: {toggle: 'dropdown'}}
+            %span.caret            
+          %ul.age-dropdown.dropdown-menu{role: 'menu'}
+            - (1..15).each do |i|
+              %li{class: ('active' if params[:age].to_i == i)}
+                %a= "#{pluralize(i, 'year')} old"
+            %li
+              %a 16+ years old
+  
+      - sort_options = ['Popular', 'Recent', 'Simple', 'Cost']
+      .search-box.col-sm-3.col-xs-5
+        %h4.title-font 
+          SORT
+        .btn-group
+          %button.btn.btn-default.sort-selection{type: 'button', data: {toggle: 'dropdown'}}
+            - if params.include?(:sort) 
+              = params[:sort].capitalize
+            - else
+              = 'Popular'
+          %button.btn.btn-default.dropdown-toggle{type: 'button', data: {toggle: 'dropdown'}}
+            %span.caret            
+          %ul.sort-dropdown.dropdown-menu{role: 'menu'}
+            - sort_options.each_with_index do |option, i|
+              %li{class: ('active' if params[:sort] == option.downcase || (i == 0 && params[:sort].blank?))}
+                %a= option
+          
+      .search-box.col-sm-3.hidden-xs
+        %h4.title-font SORT #2
+        .btn-group
+          %button.btn.btn-default.sort2-selection{type: 'button', data: {toggle: 'dropdown'}}
+            - if params.include?(:sort2) 
+              = params[:sort2].capitalize
+            - else
+              = 'Simple'
+          %button.btn.btn-default.dropdown-toggle{type: 'button', data: {toggle: 'dropdown'}}
+            %span.caret            
+          %ul.sort2-dropdown.dropdown-menu{role: 'menu'}
+            - sort_options.each_with_index do |option, i|
+              %li{class: ('active' if params[:sort2] == option.downcase || (i == 2 && params[:sort2].blank?))}
+                %a= option
+              
+      .search-box.col-sm-3.col-xs-2
+        %h4 &nbsp;
+        %a.btn.btn-success.search{type: 'button', data: {path: projects_path}} Search &raquo;
     
     .col-md-12
       - @projects.each do |project|
         .project_listing
-          .col-md-2
-            = link_to image_tag(project.photo(:square), class: 'img-rounded'), project
-          .stats.col-md-10
+          .image.col-md-3
+            = link_to image_tag(project.photo(:square), class: 'img-rounded img-responsive centered'), project
+          .stats.col-md-9
             .col-md-12
               %h4= link_to truncate(project.title, length: 36), project            
             
-            .col-md-5
+            .col-md-4
               - if project.min_age
                 %p
                   Suggested Age: 
                   = project.min_age
               - if project.average_simple
                 %p= "#{project.simple_description} (#{project.estimated_simple})"
-            .info.col-md-7
+            .info.col-md-8
               %p= truncate(project.description, length: 150)
 
                   
