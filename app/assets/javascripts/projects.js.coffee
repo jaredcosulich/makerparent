@@ -62,6 +62,8 @@ $( ->
       console.log('fail')
     
     $('.cloudinary-fileupload').bind 'fileuploadprogress', (e, data) ->
+      $('#add-experience_photos').modal('hide')
+      location.hash = "experience#{$('#add-experience_photos').data('id')}"
       # createPreviews(data.originalFiles)
       # progress = $(".#{newPhotoId} .progress")
       # progress.css('width', Math.round((data.loaded * 100.0) / data.total) + '%'); 
@@ -89,10 +91,10 @@ $( ->
             callback = ->
               savedFiles[file.size] = true
               for f in data.originalFiles
-                return unless savedFiles[f.size] 
-              $('#add-experience_photos').modal('hide')
-              location.href = location.href.replace(/\?.*/, '').replace(/#.*/, '' ) + "#experience#{$('#add-experience_photos').data('id')}"
-              location.reload()
+                return unless savedFiles[f.size]
+              href = location.href 
+              location.href = href.replace(/\?.*/, '').replace(/#.*/, '') + "#experience#{$('#add-experience_photos').data('id')}"
+              location.reload() if href.indexOf('?') == -1
               
             saveFile(file, data, callback)
           

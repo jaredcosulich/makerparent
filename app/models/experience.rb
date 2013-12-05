@@ -2,7 +2,7 @@ class Experience < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :project
-  has_many :experience_photos
+  has_many :experience_photos, dependent: :destroy
   
   def simple_description(long=false)
     return '' unless simple

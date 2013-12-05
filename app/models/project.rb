@@ -1,10 +1,10 @@
 class Project < ActiveRecord::Base
 
   belongs_to :user
-  has_many :instructions
-  has_many :materials
-  has_many :experiences, counter_cache: true
-  has_many :bookmarks, counter_cache: true
+  has_many :instructions, dependent: :destroy
+  has_many :materials, dependent: :destroy
+  has_many :experiences, counter_cache: true, dependent: :destroy
+  has_many :bookmarks, counter_cache: true, dependent: :destroy
   
   has_attached_file :photo, 
     :styles => { rect: '300x200#', square: '150x150#', medium: '300x300>', thumb: '100x100>' }, 

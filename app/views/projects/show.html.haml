@@ -78,22 +78,23 @@
                     I'd recommend this project.
                   - else
                     I would not recommend this project.
-                - if experience.simple
-                  %p= "This project was #{experience.simple_description.downcase} (#{experience.simple})"
               
                 - if experience.cost
                   %p 
-                    It cost us 
-                    = number_to_currency(experience.cost)
+                    It cost about  
+                    = number_to_currency(experience.cost, precision: 0)
 
                 - if experience.time
                   %p 
                     It took us 
-                    = distance_of_time_in_words(experience.time)
+                    = distance_of_time_in_words(experience.time * 60)
 
                 %p
                   Youngest child was
                   = pluralize(experience.min_age, 'year old', 'years old')
+
+                - if experience.simple
+                  %p= "This project was #{experience.simple_description.downcase} (#{experience.simple})"
               
               - if experience.experience_photos.present?
                 .photos.col-md-6
