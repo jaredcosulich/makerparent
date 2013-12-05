@@ -104,8 +104,9 @@
                 .photos.col-lg-6
                   %h4.title-font Experience Photos
                   - experience.experience_photos.each do |photo|
-                    = image_tag(photo.href_small)
-                
+                    .thumbnail-container.col-lg-6
+                      = image_tag(photo.href_small, class: 'img-rounded img-responsive')
+                    
               - if user_signed_in? && current_user == experience.user
                 .admin_actions
                   %a.icon-edit{href: (@project.instructions.blank? ? '#add-photos' : '#photos'), data: {toggle: 'modal'}} &nbsp;Edit Photos

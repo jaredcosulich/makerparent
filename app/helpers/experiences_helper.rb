@@ -8,7 +8,7 @@ module ExperiencesHelper
       quality: 80, 
       angle: :exif,
       eager: [
-        {crop: :fill, width: 240, height: 180, quality: 80, angle: :exif}
+        {crop: :fill, width: 120, height: 108, quality: 80, angle: :exif}
       ]      
     }
   end
