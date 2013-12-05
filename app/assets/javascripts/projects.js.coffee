@@ -4,6 +4,9 @@
 
 $( ->
   ready = ->
+    if location.hash.replace(/#/, '').length > 0
+      $(window).scrollTop($(window).scrollTop() - 120)
+    
     $("#add-#{info[1]}").modal() if (info = location.href.match(/dialog=(\w+)/))
 
     $('.form-group .btn-checkbox').bind 'click', ->
@@ -33,7 +36,7 @@ $( ->
     setSearchLink()
     
     
-    saveFile = (file, data) ->
+    saveFile = (file, data, callback) ->
       form = $('.cloudinary-fileupload').closest('form')
       $.ajax
         method: 'POST',
@@ -48,7 +51,7 @@ $( ->
           }
         },
         dataType: 'json'#,
-        #success: ( -> ),
+        success: callback,
         #error: (-> console.log('error', file)),
         #complete: (-> console.log('complete', file))
     
@@ -59,7 +62,6 @@ $( ->
       console.log('fail')
     
     $('.cloudinary-fileupload').bind 'fileuploadprogress', (e, data) ->
-      console.log('upload', e, data)
       # createPreviews(data.originalFiles)
       # progress = $(".#{newPhotoId} .progress")
       # progress.css('width', Math.round((data.loaded * 100.0) / data.total) + '%'); 
@@ -67,8 +69,8 @@ $( ->
     $('.cloudinary-fileupload').bind 'fileuploadfail', (e, data) ->
       failPhoto(originalFile(data))
 
+    savedFiles = {}
     $('.cloudinary-fileupload').bind 'cloudinarydone', (e, data) ->
-      console.log('done', e, data)
       
       if data.result.resource_type == 'raw'
         failPhoto(originalFile(data), true)
@@ -83,7 +85,14 @@ $( ->
 
       for file, index in data.originalFiles
         if file.size == data.total
-          saveFile(file, data)
+          callback = ->
+            savedFiles[file.size] = true
+            return unless savedFiles[f.size] for f in data.originalFiles
+            $('#add-experience_photos').modal('hide')
+            location.href = location.href.replace(/\?.*/, '') + "#experience#{$('#add-experience_photos').data('id')}"
+            location.reload()
+            
+          saveFile(file, data, callback)
           
       return true
     

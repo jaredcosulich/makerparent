@@ -24,7 +24,7 @@ class ExperiencesController < ApplicationController
   def create
     @project = Project.find(params[:project_id])
     @experience = @project.experiences.new(experience_params)
-    @experience.user == current_user
+    @experience.user = current_user
 
     if @experience.save
       redirect_to project_url(@project, dialog: 'experience_photos')
