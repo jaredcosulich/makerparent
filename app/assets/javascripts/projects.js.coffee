@@ -55,18 +55,25 @@ $( ->
         #error: (-> console.log('error', file)),
         #complete: (-> console.log('complete', file))
     
-    createPreviews = (originalFiles) ->
-      console.log(originalFiles)
-      
     failPhoto = ->
       console.log('fail')
     
     $('.cloudinary-fileupload').bind 'fileuploadprogress', (e, data) ->
       $('#add-experience_photos').modal('hide')
-      location.hash = "experience#{$('#add-experience_photos').data('id')}"
-      # createPreviews(data.originalFiles)
-      # progress = $(".#{newPhotoId} .progress")
-      # progress.css('width', Math.round((data.loaded * 100.0) / data.total) + '%'); 
+      experienceId = $('#add-experience_photos').data('id')
+      location.hash = "experience#{experienceId}"
+
+      status = $("#photo#{data.total}")
+      unless status.length
+        container = $(document.createElement('DIV'))
+        container.addClass('progress-container')
+        status = $(document.createElement('DIV'))
+        status.attr('id', "photo#{data.total}")
+        status.addClass('progress')
+        container.append(status)
+        $("#experience_photos_#{experienceId}").append(container)        
+      
+      status.css('width', Math.round((data.loaded * 100.0) / data.total) + '%'); 
 
     $('.cloudinary-fileupload').bind 'fileuploadfail', (e, data) ->
       failPhoto(originalFile(data))

@@ -72,7 +72,7 @@
               .clearfix
               
               .details.col-md-6
-                %h4.title-font Project Details 
+                %h4.title-font.text-centered Details 
                 %p
                   - if experience.recommended
                     I'd recommend this project.
@@ -89,17 +89,19 @@
                     It took us 
                     = distance_of_time_in_words(experience.time * 60)
 
-                %p
-                  Youngest child was
-                  = pluralize(experience.min_age, 'year old', 'years old')
+                - if experience.min_age.present? && experience.min_age > 0 
+                  %p
+                    Youngest child was
+                    = pluralize(experience.min_age, 'year old', 'years old')
 
                 - if experience.simple
                   %p= "This project was #{experience.simple_description.downcase} (#{experience.simple})"
               
-              - if experience.experience_photos.present?
-                .photos.col-md-6
+              .photos.col-md-6{id: "experience_photos_#{experience.id}"}
+                - if experience.experience_photos.present?
+                  %h4.title-font.text-centered Photos 
                   - experience.experience_photos.each do |photo|
-                    .thumbnail-container.col-md-6
+                    .thumbnail-container{class: "col-md-#{experience.experience_photos.length > 1 ? 6 : 12}"}
                       = image_tag(photo.href_small, class: 'img-rounded img-responsive centered')
                     
               - if user_signed_in? && current_user == experience.user
