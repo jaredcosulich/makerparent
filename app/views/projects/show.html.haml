@@ -66,15 +66,13 @@
         .panel-body
           - @project.experiences.each do |experience|
             .experience.well{id: "experience#{experience.id}"}
-              = image_tag('me.jpg')
+              = image_tag('me.jpg', class: 'profile-image')
               %p= experience.details
               
               .clearfix
               
-              .details.col-lg-6
-                %p
-                  The youngest child was
-                  = pluralize(experience.min_age, 'year old', 'years old')
+              .details.col-md-6
+                %h4.title-font Project Details 
                 %p
                   - if experience.recommended
                     I'd recommend this project.
@@ -92,12 +90,16 @@
                   %p 
                     It took us 
                     = distance_of_time_in_words(experience.time)
+
+                %p
+                  Youngest child was
+                  = pluralize(experience.min_age, 'year old', 'years old')
               
               - if experience.experience_photos.present?
-                .photos.col-lg-6
+                .photos.col-md-6
                   - experience.experience_photos.each do |photo|
-                    .thumbnail-container.col-lg-6
-                      = image_tag(photo.href_small, class: 'img-rounded img-responsive')
+                    .thumbnail-container.col-md-6
+                      = image_tag(photo.href_small, class: 'img-rounded img-responsive centered')
                     
               - if user_signed_in? && current_user == experience.user
                 .admin_actions
