@@ -5,7 +5,7 @@
 $( ->
   ready = ->
     if location.hash.replace(/#/, '').length > 0
-      $(window).scrollTop($(window).scrollTop() - 120)
+      setTimeout(( -> $(window).scrollTop($(window).scrollTop() - 90)), 100)
     
     $("#add-#{info[1]}").modal() if (info = location.href.match(/dialog=(\w+)/))
 
@@ -85,14 +85,16 @@ $( ->
 
       for file, index in data.originalFiles
         if file.size == data.total
-          callback = ->
-            savedFiles[file.size] = true
-            return unless savedFiles[f.size] for f in data.originalFiles
-            $('#add-experience_photos').modal('hide')
-            location.href = location.href.replace(/\?.*/, '') + "#experience#{$('#add-experience_photos').data('id')}"
-            location.reload()
-            
-          saveFile(file, data, callback)
+          do (file, data) ->
+            callback = ->
+              savedFiles[file.size] = true
+              for f in data.originalFiles
+                return unless savedFiles[f.size] 
+              $('#add-experience_photos').modal('hide')
+              location.href = location.href.replace(/\?.*/, '').replace(/#.*/, '' ) + "#experience#{$('#add-experience_photos').data('id')}"
+              location.reload()
+              
+            saveFile(file, data, callback)
           
       return true
     
