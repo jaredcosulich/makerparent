@@ -28,6 +28,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   def show
     @experience = Experience.new
+    @current_experience = @project.experiences.where(user_id: current_user.id).last if user_signed_in?
   end
 
   # GET /projects/new

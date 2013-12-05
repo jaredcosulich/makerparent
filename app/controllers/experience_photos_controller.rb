@@ -23,11 +23,17 @@ class ExperiencePhotosController < ApplicationController
   def create
     @experience_photo = ExperiencePhoto.new(experience_photo_params)
 
-    if @experience_photo.save
-      redirect_to @experience_photo, notice: 'Experience photo was successfully created.'
-    else
-      render action: 'new'
-    end
+    respond_to do |format|
+      if @experience_photo.save
+        format.html { redirect_to @experience_photo.experience }
+        format.js   { render '', layout: false }
+        format.json { render json: {id: @experience_photo.id}, status: :created, location: @experience_photo }
+      else
+        format.html { redirect_to root_path }
+        format.json { render json: @experience_photo.errors, status: :unprocessable_entity }
+      end
+    end    
+
   end
 
   # PATCH/PUT /experience_photos/1

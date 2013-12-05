@@ -103,6 +103,8 @@
               - if experience.experience_photos.present?
                 .photos.col-lg-6
                   %h4.title-font Experience Photos
+                  - experience.experience_photos.each do |photo|
+                    = image_tag(photo.href_small)
                 
               - if user_signed_in? && current_user == experience.user
                 .admin_actions
@@ -140,22 +142,24 @@
           %button.btn.btn-default{type: 'button', data: {dismiss: 'modal'}} Close
 
 
-  #add-experience_photos.modal.fade{tabindex: -1, role: 'dialog', aria: {labelledby: 'experience_photos', hidden: 'true'}}
-    .modal-dialog
-      .modal-content      
-        .modal-header
-          %h4 Add Photos Of Your Experience
-        .modal-body
-          %br
-          %p
-            %h5 Would you like to add photos of your experience doing this project?
+  - if @current_experience
+    #add-experience_photos.modal.fade{tabindex: -1, role: 'dialog', aria: {labelledby: 'experience_photos', hidden: 'true'}}
+      .modal-dialog
+        .modal-content      
+          .modal-header
+            %h4 Add Photos Of Your Experience
+          .modal-body
             %br
-            = cl_image_upload_tag(:item_id, upload_options.merge(html: {multiple: 'true'}))
-          %br
-          %p
-            You can also do so later.
-        .modal-footer
-          %button.btn.btn-default{type: 'button', data: {dismiss: 'modal'}} Close
+            %p
+              %h5 Would you like to add photos of your experience doing this project?
+              %br
+              = form_for @current_experience.experience_photos.new, data: {id: @current_experience.id} do |f|
+                = cl_image_upload_tag(:item_id, upload_options.merge(html: {multiple: 'true'}))
+            %br
+            %p
+              You can also do so later.
+          .modal-footer
+            %button.btn.btn-default{type: 'button', data: {dismiss: 'modal'}} Close
 
   - if user_signed_in?
     #add-experience.modal.fade{tabindex: -1, role: 'dialog', aria: {labelledby: 'experience', hidden: 'true'}}

@@ -32,6 +32,26 @@ $( ->
     bindFilter(name) for name in ['age', 'sort', 'sort2']
     setSearchLink()
     
+    
+    saveFile = (file, data) ->
+      form = $('.cloudinary-fileupload').closest('form')
+      $.ajax
+        method: 'POST',
+        url: form.attr('action'),
+        data: {
+          experience_photo: {
+            experience_id: form.data('id')
+            date_taken: (data.result.exif?.DateTime or '').replace(/:/, '/').replace(/:/, '/'),
+            href_large: data.result.url,
+            href_small: data.result.eager[0].url,
+            cloudinary_id: data.result.public_id    
+          }
+        },
+        dataType: 'json'#,
+        #success: ( -> ),
+        #error: (-> console.log('error', file)),
+        #complete: (-> console.log('complete', file))
+    
     createPreviews = (originalFiles) ->
       console.log(originalFiles)
       
@@ -39,30 +59,27 @@ $( ->
       console.log('fail')
     
     $('.cloudinary-fileupload').bind 'fileuploadprogress', (e, data) ->
-      hideMobileMenus()
-      newPhotoId = "photo-#{data.total}"
-      createPreviews(data.originalFiles)
-      progress = $(".#{newPhotoId} .progress")
-      progress.css('width', Math.round((data.loaded * 100.0) / data.total) + '%'); 
+      console.log('upload', e, data)
+      # createPreviews(data.originalFiles)
+      # progress = $(".#{newPhotoId} .progress")
+      # progress.css('width', Math.round((data.loaded * 100.0) / data.total) + '%'); 
 
     $('.cloudinary-fileupload').bind 'fileuploadfail', (e, data) ->
       failPhoto(originalFile(data))
 
     $('.cloudinary-fileupload').bind 'cloudinarydone', (e, data) ->
-      photo = $(".photo-#{data.total}")
-
+      console.log('done', e, data)
+      
       if data.result.resource_type == 'raw'
         failPhoto(originalFile(data), true)
         return true
 
-      photo.removeClass('loading')
-      preview = photo.find('.preview')
-      preview.html(
-        $.cloudinary.image(data.result.public_id, { 
-          format: data.result.format, version: data.result.version, 
-          crop: 'fill', width: 240, height: 180, quality: 50
-        })
-      )
+      # preview.html(
+      #   $.cloudinary.image(data.result.public_id, { 
+      #     format: data.result.format, version: data.result.version, 
+      #     crop: 'fill', width: 240, height: 180, quality: 50
+      #   })
+      # )
 
       for file, index in data.originalFiles
         if file.size == data.total
