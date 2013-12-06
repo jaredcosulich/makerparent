@@ -66,7 +66,17 @@
         .panel-body
           - @project.experiences.each do |experience|
             .experience.well{id: "experience#{experience.id}"}
-              = image_tag('me.jpg', class: 'profile-image')
+              - if experience.user.photo.present?
+                .thumbnail.pull-left.text-centered
+                  = image_tag(experience.user.photo.url(:thumb))
+                  .caption
+                    %small
+                      = experience.user.display_name
+                      /%br
+                      /%small MakerParent Since 
+                      /%br
+                      /%small= experience.user.created_at.strftime('%b, %Y')
+              
               %p= experience.details
               
               .clearfix

@@ -8,10 +8,18 @@
       .form-group
         = f.label :name
         = f.text_field :name, :autofocus => true, class: 'form-control'
+
+      .form-group
+        = f.label :display_name, "Display Name / Nickname / Profile Name"
+        = f.text_field :display_name, class: 'form-control'
       
       .form-group
         = f.label :email
         = f.email_field :email, class: 'form-control'
+
+      .form-group
+        = f.label :photo, "Profile Photo"
+        = f.file_field :photo, class: 'form-control'
 
       .form-group
         = f.label :password

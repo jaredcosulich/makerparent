@@ -95,6 +95,11 @@ ActiveRecord::Schema.define(version: 20131204200024) do
 
   create_table "users", force: true do |t|
     t.string   "name",                   default: "", null: false
+    t.string   "display_name",           default: "", null: false
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
