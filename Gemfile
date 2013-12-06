@@ -23,4 +23,4 @@ gem 'devise'
 gem 'cloudinary'
 gem 'rails_12factor', group: :production
 gem 'newrelic_rpm'
-gem 'aws-s3'
+gem 'aws-sdk'
