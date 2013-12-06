@@ -21,3 +21,5 @@ gem 'unicorn'
 gem 'paperclip', '~> 3.0'
 gem 'devise'
 gem 'cloudinary'
+gem 'rails_12factor', group: :production
+gem 'newrelic_rpm'
