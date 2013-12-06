@@ -63,7 +63,7 @@
               /  = link_to 'Store', projects_path
             %form.navbar-form.navbar-right
               - if user_signed_in?                
-                =# link_to 'My Account', account_path, class: 'account-link btn btn-success'
+                = link_to 'Edit Account', edit_user_registration_path, class: 'account-link btn btn-success'
                 = link_to 'Log Out', destroy_user_session_path, method: 'DELETE', class: 'btn btn-primary'
               - else
                 = link_to 'Sign In', new_user_session_path, class: 'btn btn-success'
