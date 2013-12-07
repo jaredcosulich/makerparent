@@ -5,10 +5,11 @@
   .col-md-8
     .project.well.well-lg
       .details
-        = image_tag @project.photo.url(:medium), class: 'pull-left'
+        - unless @project.photo.blank?
+          = image_tag @project.photo.url(:medium), class: 'pull-left'
         .info
           %h3= @project.title
-          %p= @project.description
+          %p= auto_link(@project.description.gsub(/\r/, '<br/>'), html: {target: '_blank', rel: 'nofollow'})
           %p
             - if @project.url?
               = link_to raw('Visit Website &raquo;'), @project.url, class: 'btn btn-primary', target: '_blank'
