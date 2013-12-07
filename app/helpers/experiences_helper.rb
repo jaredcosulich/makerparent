@@ -3,8 +3,9 @@ module ExperiencesHelper
   def upload_options
     return {
       exif: true,
-      width: 960, 
-      height: 720,
+      crop: :fit,
+      width: 720, 
+      height: 540,
       quality: 80, 
       angle: :exif,
       eager: [

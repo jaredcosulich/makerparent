@@ -111,8 +111,15 @@
                 - if experience.experience_photos.present?
                   %h4.title-font.text-centered Photos 
                   - experience.experience_photos.each do |photo|
-                    .thumbnail-container{class: "col-md-#{experience.experience_photos.length > 1 ? 6 : 12}"}
+                    .thumbnail-container{class: "col-md-#{experience.experience_photos.length > 1 ? 6 : 12}", data: {toggle: 'modal', target: "#photo#{photo.id}"}}
                       = image_tag(photo.href_small, class: 'img-rounded img-responsive centered')
+                    
+                    .modal.fade{id: "photo#{photo.id}", tabindex: -1, role: 'dialog', arial: {labelledby: 'photoModal', hidden: 'true'}}
+                      .modal-dialog
+                        .modal-content
+                          .modal-body
+                            = image_tag(photo.href_large)
+                            
                     
               - if user_signed_in? && current_user == experience.user
                 .admin_actions
