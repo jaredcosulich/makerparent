@@ -1,7 +1,11 @@
 !!!
 %html
   %head
-    %title MakerParent
+    %title= "#{"#{@title} - " if @title.present?}MakerParent"
+    %meta{:name => "description", :content => "This year, instead of gifts, have your friends and family support your favorite charities by making a donation in your name on your birthday (or Christmas, Hanukkah, Mother's Day, etc.)! Even if your birthday is months away, you can give your favorite charities valuable exposure by setting up your birthday page today."}
+    %link{:href => 'images/charity_birthday_square_brown.png', :rel => 'image_src'}
+
+    %link{href: asset_path('favicon.ico'), rel: 'shortcut icon'}
 
     =# stylesheet_link_tag    '//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/css/bootstrap.css'
     =# stylesheet_link_tag     '//getbootstrap.com/dist/css/bootstrap.min.css'

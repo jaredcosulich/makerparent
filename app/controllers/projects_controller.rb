@@ -4,6 +4,7 @@ class ProjectsController < ApplicationController
 
   # GET /projects
   def index
+    @title = 'Explore Projects'
     limit = 10
     @page = params.include?(:page) ? params[:page] : 0
     @projects = Project.limit(limit).offset(@page * limit)
@@ -27,12 +28,14 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1
   def show
+    @title = @project.title
     @experience = Experience.new
     @current_experience = @project.experiences.where(user_id: current_user.id).last if user_signed_in?
   end
 
   # GET /projects/new
   def new
+    @title = 'New Project'
     @project = Project.new
   end
 
