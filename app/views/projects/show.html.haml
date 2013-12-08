@@ -35,8 +35,29 @@
   .clearfix
 
   .project-extra
-    .materials.col-md-4
-      .panel.panel-default    
+    .col-md-4
+      .stats.panel.panel-default    
+        .panel-heading
+          %h3.panel-title Details
+        .panel-body 
+          %ul.pull-left
+            - if @project.average_simple.present?
+              %li
+                = "#{@project.simple_description} (#{@project.average_simple})"
+            - if @project.min_age.present? && @project.min_age > 0
+              %li
+                = pluralize(@project.min_age, '+ year old', '+ years old').gsub(/\s\+/, '+')
+          %ul.pull-left
+            - if @project.min_time.present? && @project.min_time > 0
+              %li
+                = distance_of_time_in_words(@project.min_time * 60)
+            - if @project.min_cost.present? && @project.min_cost > 0
+              %li
+                = "Rough Cost: #{number_to_currency(@project.min_cost, precision: 0)}"
+                
+
+    
+      .materials.panel.panel-default    
         .panel-heading
           %h3.panel-title Materials
         .panel-body
@@ -44,10 +65,7 @@
             .text-centered
               %h4 No Materials Listed Yet
               %p 
-                If you've tried this project please add an experience report and provide some 
-                information about the materials involved and how long the project took.
-              %br
-              %p= link_to raw('&nbsp; Add Report'), new_project_experience_path(@project), class: 'btn btn-primary icon-plus-sign'
+                Please provide an experience report first.
          
       - if @project.experiences.length > 1
         %br
