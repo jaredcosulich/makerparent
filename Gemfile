@@ -25,3 +25,4 @@ gem 'rails_12factor', group: :production
 gem 'newrelic_rpm'
 gem 'aws-sdk'
 gem 'rails_autolink'
+gem 'will_paginate', '~> 3.0'

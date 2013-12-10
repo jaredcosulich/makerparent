@@ -74,7 +74,10 @@
       - @projects.each do |project|
         .project_listing
           .image.col-md-3
-            = link_to image_tag(project.photo(:square), class: 'img-rounded img-responsive centered'), project
+            - if project.photo.blank?
+              &nbsp;
+            - else
+              = link_to image_tag(project.photo(:square), class: 'img-rounded img-responsive centered'), project
           .stats.col-md-9
             .col-md-12
               %h4= link_to truncate(project.title, length: 36), project            
@@ -88,14 +91,22 @@
                 %p= "#{project.simple_description} (#{project.estimated_simple})"
             .info.col-md-8
               %p= truncate(project.description, length: 150)
+           
+      .pages
+        %h5.title-font.text-centered
+          = will_paginate @projects
 
-                  
+
     
   .col-md-2.hidden-sm.hidden-xs
     .skyscraper-ad
-      <div id='div-gpt-ad-1383843654364-1' style='width:300px; height:250px;'>
-      <script type='text/javascript'>
-      googletag.cmd.push(function() { googletag.display('div-gpt-ad-1383843654364-1'); });
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <!-- MakerParent List -->
+      <ins class="adsbygoogle"
+      style="display:inline-block;width:160px;height:600px"
+      data-ad-client="ca-pub-8093777559830738"
+      data-ad-slot="9509203303"></ins>
+      <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
       </script>
-      </div>
       

@@ -5,9 +5,7 @@ class ProjectsController < ApplicationController
   # GET /projects
   def index
     @title = 'Explore Projects'
-    limit = 10
-    @page = params.include?(:page) ? params[:page] : 0
-    @projects = Project.limit(limit).offset(@page * limit)
+    @projects = Project.paginate(page: params[:page], per_page: 10)
     
     if params.include?(:sort)
       if params[:sort] == 'popular'
