@@ -1,5 +1,7 @@
 class BookmarksController < ApplicationController
   before_action :set_bookmark, only: [:show, :edit, :update, :destroy]
+  before_action :set_project, only: [:create]
+  before_filter :authenticate_user!
 
   # GET /bookmarks
   def index
@@ -21,13 +23,19 @@ class BookmarksController < ApplicationController
 
   # POST /bookmarks
   def create
-    @bookmark = Bookmark.new(bookmark_params)
+    @bookmark = @project.bookmarks.new
+    @bookmark.user = current_user
 
-    if @bookmark.save
-      redirect_to @bookmark, notice: 'Bookmark was successfully created.'
-    else
-      render action: 'new'
-    end
+    respond_to do |format|
+      if @bookmark.save()
+        format.html { redirect_to @project }
+        format.js   { render layout: false }
+        format.json { render json: @bookmark, status: :created, location: @bookmark }
+      else
+        format.html { redirect_to @project }
+        format.json { render json: @bookmark.errors, status: :unprocessable_entity }
+      end
+    end    
   end
 
   # PATCH/PUT /bookmarks/1
@@ -51,8 +59,12 @@ class BookmarksController < ApplicationController
       @bookmark = Bookmark.find(params[:id])
     end
 
+    def set_project
+      @project = Project.find(params[:project_id])
+    end
+
     # Only allow a trusted parameter "white list" through.
     def bookmark_params
-      params.require(:bookmark).permit(:user_id, :project_id)
+      # params.require(:bookmark).permit(:project_id)
     end
 end

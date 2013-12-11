@@ -13,8 +13,14 @@
           %p
             - if @project.url?
               = link_to raw('Visit Website &raquo;'), @project.url, class: 'btn btn-primary', target: '_blank'
-      
-      
+              &nbsp; &nbsp;
+            - if @bookmarked
+              = fa_icon('star')
+              Bookmarked
+              = fa_icon('star')
+            - else
+              = link_to raw("#{fa_icon('star')} Bookmark"), bookmarks_path(@bookmark, project_id: @project), class: 'btn btn-default', method: 'POST'
+          
         - if user_signed_in? && (current_user == @project.user || current_user.admin?)
           .admin_actions
             %a.icon-edit{href: (@project.instructions.blank? ? '#add-instructions' : '#instructions'), data: {toggle: 'modal'}} Instructions

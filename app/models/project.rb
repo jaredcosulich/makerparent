@@ -10,6 +10,7 @@ class Project < ActiveRecord::Base
     :styles => { rect: '300x200#', square: '150x150#', medium: '300x300>', thumb: '100x100>' }, 
     :default_url => "/images/:style/missing.png"
 
+  before_create :set_defaults
   before_save :calculate_averages
   
   LONG_ESTIMATED_SIMPLE_DESCRIPTIONS = [
@@ -46,5 +47,9 @@ class Project < ActiveRecord::Base
       self.min_cost = estimated_cost
       self.min_age = estimated_age
     end
-
+    
+    def set_defaults
+      self.experiences_count = 0
+      self.bookmarks_count = 0
+    end
 end

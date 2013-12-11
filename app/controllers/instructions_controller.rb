@@ -13,7 +13,7 @@ class InstructionsController < ApplicationController
 
   # GET /instructions/new
   def new
-    @instruction = Instruction.new
+    @instruction = @project.instructions.new
   end
 
   # GET /instructions/1/edit
