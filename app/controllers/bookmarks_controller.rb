@@ -49,8 +49,9 @@ class BookmarksController < ApplicationController
 
   # DELETE /bookmarks/1
   def destroy
+    project = @bookmark.project
     @bookmark.destroy
-    redirect_to bookmarks_url, notice: 'Bookmark was successfully destroyed.'
+    redirect_to project
   end
 
   private

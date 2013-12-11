@@ -1,0 +1,28 @@
+.container
+  %h2.title-font.text-centered
+    My Account
+    
+  %br
+  
+  .user-info.centered.text-centered
+    %p= current_user.name
+    %p= current_user.display_name
+    %p= current_user.email
+    %p= link_to 'Edit User Information', edit_user_registration_path
+  
+  
+  %br
+  
+  %h3.title-font Projects You've Tried
+  - @experienced_projects.each do |project|
+    = render partial: 'project_preview', locals: {project: project}
+     
+  .clearfix   
+  %br
+  %br
+  %br
+  %br
+  
+  %h3.title-font Projects You've Bookmarked
+  - @bookmarked_projects.each do |project|
+    = render partial: 'project_preview', locals: {project: project}

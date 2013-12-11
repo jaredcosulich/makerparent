@@ -11,6 +11,8 @@ Makerparent::Application.routes.draw do
     resources :materials
   end
 
+  resource :account
+  
   get 'about', to: 'about#index'
   root 'welcome#index'
 end

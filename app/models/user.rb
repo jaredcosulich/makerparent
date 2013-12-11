@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
     :styles => { rect: '300x200#', thumb: '100x100>' }, 
     :default_url => "/images/:style/missing.png"
 
+  has_many :experiences
   has_many :bookmarks
 
   def admin?

@@ -28,8 +28,8 @@ class ProjectsController < ApplicationController
   def show
     @title = @project.title
     @experience = Experience.new
-    @bookmark = @project.bookmarks.new
-    @bookmarked = @project.bookmarks.where(user: current_user).first if current_user
+    @new_bookmark = @project.bookmarks.new
+    @bookmark = @project.bookmarks.where(user: current_user).first if current_user
     @current_experience = @project.experiences.where(user_id: current_user.id).last if user_signed_in?
   end
 

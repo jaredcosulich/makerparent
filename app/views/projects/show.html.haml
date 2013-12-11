@@ -11,15 +11,14 @@
           %h3= @project.title
           %p= auto_link(@project.description.gsub(/\r/, '<br/>'), html: {target: '_blank', rel: 'nofollow'})
           %p
-            - if @project.url?
-              = link_to raw('Visit Website &raquo;'), @project.url, class: 'btn btn-primary', target: '_blank'
-              &nbsp; &nbsp;
-            - if @bookmarked
-              = fa_icon('star')
-              Bookmarked
-              = fa_icon('star')
+            - if @bookmark
+              = link_to raw("#{fa_icon('star')} Bookmarked #{fa_icon('star')}"), @bookmark, method: 'DELETE', confirm: 'Are you sure you want to delete this bookmark?'
             - else
-              = link_to raw("#{fa_icon('star')} Bookmark"), bookmarks_path(@bookmark, project_id: @project), class: 'btn btn-default', method: 'POST'
+              = link_to raw("#{fa_icon('star')} Bookmark #{fa_icon('star')}"), bookmarks_path(@new_bookmark, project_id: @project), class: 'btn btn-default', method: 'POST'
+
+            - if @project.url?
+              &nbsp; &nbsp;
+              = link_to raw('Visit Website &raquo;'), @project.url, class: 'btn btn-primary', target: '_blank'
           
         - if user_signed_in? && (current_user == @project.user || current_user.admin?)
           .admin_actions
