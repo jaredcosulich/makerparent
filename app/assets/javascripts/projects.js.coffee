@@ -20,7 +20,7 @@ $( ->
       
       link = $('.search')
       queryParams = []
-      queryParams.push("age=#{parseInt(getValue('age'))}") if $('.age-selection').length
+      queryParams.push("age=#{parseInt(getValue('age'))}") if $('.age-selection').length and !isNaN(parseInt(getValue('age')))
       queryParams.push("sort=#{getValue('sort')}") if $('.sort-selection').length
       queryParams.push("sort2=#{getValue('sort2')}") if $('.sort2-selection').length
       link.attr(href: "#{link.data('path')}?#{queryParams.join('&')}" )
