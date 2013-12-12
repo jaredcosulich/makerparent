@@ -147,7 +147,7 @@
                     .thumbnail-container{class: "col-md-#{experience.experience_photos.length > 1 ? 6 : 12}", data: {toggle: 'modal', target: "#photo#{photo.id}"}}
                       = image_tag(photo.href_small, class: 'img-rounded img-responsive centered')
                     
-                    .modal.fade{id: "photo#{photo.id}", tabindex: -1, role: 'dialog', arial: {labelledby: 'photoModal', hidden: 'true'}}
+                    .photo-modal.modal.fade{id: "photo#{photo.id}", tabindex: -1, role: 'dialog', arial: {labelledby: 'photoModal', hidden: 'true'}}
                       .modal-dialog
                         .modal-content
                           .modal-body
