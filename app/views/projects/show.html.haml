@@ -1,8 +1,8 @@
-.container.project-page
+.container-non-responsive.project-page
 
   / %p#notice= notice
 
-  .col-md-8
+  .col-md-8.col-xs-8
     .project.well.well-lg
       .details
         - unless @project.photo.blank?
@@ -29,7 +29,7 @@
             = link_to ' Delete', @project, method: 'delete', class: 'icon-trash'
         .clearfix
         
-  .col-md-4
+  .col-md-4.col-xs-4
     .square-ad
       <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
       <!-- MakerParent Project Page -->
@@ -44,7 +44,7 @@
   .clearfix
 
   .project-extra
-    .col-md-4
+    .col-md-4.col-xs-4
       .stats.panel.panel-default    
         .panel-heading
           %h3.panel-title Details
@@ -92,7 +92,7 @@
           </script>
 
 
-    .experiences.col-md-8
+    .experiences.col-md-8.col-xs-8
       .panel.panel-default    
         .panel-heading
           %h3.panel-title Experience Reports
@@ -114,7 +114,7 @@
               
               .clearfix
               
-              .details.col-md-6
+              .details.col-md-6.col-xs-6
                 %h4.title-font.text-centered Details 
                 %p
                   - if experience.recommended
@@ -140,7 +140,7 @@
                 - if experience.simple
                   %p= "This project was #{experience.simple_description.downcase} (#{experience.simple})"
               
-              .photos.col-md-6{id: "experience_photos_#{experience.id}"}
+              .photos.col-md-6.col-xs-6{id: "experience_photos_#{experience.id}"}
                 - if experience.experience_photos.present?
                   %h4.title-font.text-centered Photos 
                   - experience.experience_photos.each do |photo|

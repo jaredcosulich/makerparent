@@ -1,5 +1,5 @@
 .jumbotron.tight
-  .container
+  .container-non-responsive
     .buffer Project & activity ideas for parents & teachers from parents & teachers.
     = link_to raw('Explore &raquo;'), projects_path, class: 'btn btn-primary btn-lg'
     = link_to raw('Contribute &raquo;'), new_project_path, class: 'btn btn-success btn-lg'
@@ -23,9 +23,9 @@
     %a.btn.btn-success.search{type: 'button', data: {path: projects_path}} Go &raquo;
 
 
-.container
+.container-non-responsive
   .project_lists.row
-    .col-md-4
+    .col-md-4.col-xs-4
       = link_to raw('<h5>Recent</h5>'), projects_path(sort: 'recent'), class: 'header'
       - @recent.each do |project| 
         = render partial: "projects/preview", locals: {project: project}
@@ -33,7 +33,7 @@
       %p.text-centered
         = link_to raw('Recent Projects &raquo;'), projects_path(sort: 'recent'), class: 'btn btn-default'  
         
-    .col-md-4
+    .col-md-4.col-xs-4
       = link_to raw('<h5>Popular</h5>'), projects_path(sort: 'popular'), class: 'header'
       - @popular.each do |project| 
         = render partial: "projects/preview", locals: {project: project}
@@ -41,7 +41,7 @@
       %p.text-centered
         = link_to raw('Popular Projects &raquo;'), projects_path(sort: 'popular'), class: 'btn btn-default'  
 
-    .col-md-4
+    .col-md-4.col-xs-4
       = link_to raw('<h5>Simple</h5>'), projects_path(sort: 'simple'), class: 'header'
       - @simple.each do |project| 
         = render partial: "projects/preview", locals: {project: project}        

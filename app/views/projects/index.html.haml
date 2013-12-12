@@ -1,10 +1,10 @@
 .jumbotron
-  .container
+  .container-non-responsive
     .buffer 
       %h2.title-font Explore Projects
 
-.container
-  .search-projects.col-md-10
+.container-non-responsive
+  .search-projects.col-md-10.col-xs-10
     /.search-boxes.col-md-12  
     /.col-md-5
     /  .search-box
@@ -70,26 +70,26 @@
         %h4 &nbsp;
         %a.btn.btn-success.search{type: 'button', data: {path: projects_path}} Search &raquo;
     
-    .col-md-12
+    .col-md-12.col-xs-12
       - @projects.each do |project|
         .project_listing
-          .image.col-md-3
+          .image.col-md-3.col-xs-3
             - if project.photo.blank?
               &nbsp;
             - else
               = link_to image_tag(project.photo(:square), class: 'img-rounded img-responsive centered'), project
-          .stats.col-md-9
-            .col-md-12
+          .stats.col-md-9.col-xs-9
+            .col-md-12.col-xs-12
               %h4= link_to truncate(project.title, length: 36), project            
             
-            .col-md-4
+            .col-md-4.col-xs-4
               - if project.min_age
                 %p
                   Suggested Age: 
                   = project.min_age
               - if project.average_simple
                 %p= "#{project.simple_description} (#{project.estimated_simple})"
-            .info.col-md-8
+            .info.col-md-8.col-xs-4
               %p= truncate(project.description, length: 150)
            
       .pages
@@ -98,7 +98,7 @@
 
 
     
-  .col-md-2.hidden-sm.hidden-xs
+  .col-md-2.col-xs-2
     .skyscraper-ad
       <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
       <!-- MakerParent List -->
