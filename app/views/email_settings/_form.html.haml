@@ -1,0 +1,19 @@
+= form_for @email_setting do |f|
+  - if @email_setting.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@email_setting.errors.count, "error")} prohibited this email_setting from being saved:"
+      %ul
+        - @email_setting.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :user_id
+    = f.number_field :user_id
+  .field
+    = f.label :email
+    = f.text_field :email
+  .field
+    = f.label :weekly_newsletter
+    = f.check_box :weekly_newsletter
+  .actions
+    = f.submit 'Save'

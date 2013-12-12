@@ -1,0 +1,4 @@
+var subscribeMail = $('.subscribe-mail');
+subscribeMail.css({height: subscribeMail.height(), lineHeight: (subscribeMail.height() - 12) + 'px'});
+subscribeMail.html('Subscription saved. Thank you.');
+setTimeout(function() { subscribeMail.animate({opacity: 0}); }, 2000);

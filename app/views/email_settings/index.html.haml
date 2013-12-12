@@ -1,0 +1,23 @@
+%h1 Listing email_settings
+
+%table
+  %tr
+    %th User
+    %th Email
+    %th Weekly newsletter
+    %th
+    %th
+    %th
+
+  - @email_settings.each do |email_setting|
+    %tr
+      %td= email_setting.user_id
+      %td= email_setting.email
+      %td= email_setting.weekly_newsletter
+      %td= link_to 'Show', email_setting
+      %td= link_to 'Edit', edit_email_setting_path(email_setting)
+      %td= link_to 'Destroy', email_setting, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Email setting', new_email_setting_path

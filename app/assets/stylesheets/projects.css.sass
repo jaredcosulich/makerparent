@@ -4,9 +4,11 @@
 
 @import 'mixins'
 
-.projects
-  padding-top: 24px
-  
+.projects-page
+
+  .project-page
+    padding-top: 24px  
+
   .project
     border: 1px solid #ccc
 
@@ -16,23 +18,23 @@
     .details  
       position: relative
       padding: 6px
-  
+
       img 
         margin-right: 24px
 
       .info
         h3
           margin: 0
-      
+    
         p 
           margin: 0
           padding-top: 24px
-      
+    
       .admin_actions
         position: absolute
         bottom: -18px
         right: -12px
-  
+
   .stats
     ul
       margin: 0
@@ -41,7 +43,7 @@
         line-height: 2em
         margin: 0
         padding: 0
-        
+      
   .project-extra
     padding-top: 12px
 
@@ -50,18 +52,18 @@
         position: relative
         padding: 12px
         border: 1px solid #efefef
-      
+    
         overflow: hidden
         margin-bottom: 24px
-        
+      
         .thumbnail
           margin-right: 24px
           .caption
             padding: 3px 6px
-          
+        
         .clearfix
           margin-bottom: 12px
-          
+        
         .details
           padding-left: 0
           p
@@ -70,13 +72,13 @@
             background-color: white
             @include rounded(6px)
             text-align: center
-          
+        
         .photos    
           padding-right: 0
           .thumbnail-container
             padding-right: 0
             margin-bottom: 24px
-            
+          
           .progress-container
             padding: 24px 0 0 24px
             .progress
@@ -84,47 +86,47 @@
               width: 1%
               background-color: green
               content: "\00a0"
-          
+        
         .admin_actions
           position: absolute
           bottom: 9px
           right: 12px
-    
+  
       .add_experience
         text-align: center
         border: 1px solid #efefef
         padding: 30px
-      
-      
+    
+    
   .search-projects
     border: 1px solid #ccc
     @include rounded(12px)    
-    
+  
     .search-boxes
       height: 115px
-      
+    
       .search-box
         padding-top: 12px
         background-color: white
         text-align: center
-      
+    
     .project_listing
       overflow: hidden
       padding: 24px 0
       border-top: 1px solid #ccc
-      
+    
       h4
         margin-top: 0
-      
+    
       .stats, .image
         padding: 0
-        
+      
       .info
         padding: 12px
         background-color: #efefef
         @include rounded(12px)
-        
-        
+      
+      
 .project_preview
   overflow: hidden
   padding-top: 30px

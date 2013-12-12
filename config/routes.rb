@@ -1,5 +1,7 @@
 Makerparent::Application.routes.draw do
 
+  resources :email_settings
+
   resources :experience_photos
 
   devise_for :users

@@ -58,10 +58,23 @@
                 = link_to 'Sign In', new_user_session_path, class: 'btn btn-success'
                 = link_to 'Register', new_user_registration_path, class: 'btn btn-primary'
 
-    %div{class: controller.controller_name}
+    %div{class: "#{controller.controller_name}-page"}
       = yield
 
     .footer
+      - unless user_signed_in?
+        .subscribe-mail.col-lg-5.col-md-6.col-sm-8.col-xs-10.centered.text-centered
+          %h4.title-font Weekly Newsletter
+          %p Subscribe to our weekly newsletter.
+          %p It contains a few new project ideas each week.
+          = form_for EmailSetting.new, remote: true do |f|
+            .input-group.input-group-sm
+              = f.text_field :email, class: 'form-control', placeholder: 'Your Email'
+              %span.input-group-btn
+                = f.submit 'Subscribe', class: 'btn btn-default'
+          
+        
+      
       .container
         .pull-right
           = link_to raw('&copy; 2014 Irrational Design'), 'http://irrationaldesign.com', target: '_blank'
