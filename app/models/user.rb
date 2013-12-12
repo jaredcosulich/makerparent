@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
   private
     
     def create_email_settings
-      User.email_setting.create
+      User.create_email_setting
     end
 
 end
