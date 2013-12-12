@@ -9,13 +9,25 @@ class ProjectsController < ApplicationController
     
     if params.include?(:sort)
       if params[:sort] == 'popular'
-        @projects = @projects.order('experiences_count desc')
+        @projects = @projects.order('experiences_count desc, bookmarks_count desc')
       elsif params[:sort] == 'simple'
         @projects = @projects.order('average_simple asc')
       elsif params[:sort] == 'recent'
         @projects = @projects.order('created_at desc')
       end
     end   
+
+    if params.include?(:sort2)
+      if params[:sort2] == 'popular'
+        @projects = @projects.order('experiences_count desc, bookmarks_count desc')
+      elsif params[:sort2] == 'simple'
+        @projects = @projects.order('average_simple asc')
+      elsif params[:sort2] == 'recent'
+        @projects = @projects.order('created_at desc')
+      end
+    end   
+
+    @projects = @projects.order('experiences_count desc, bookmarks_count desc')
 
     if params.include?(:age)
       age = params[:age].to_i
