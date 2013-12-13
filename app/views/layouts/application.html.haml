@@ -81,3 +81,11 @@
           = link_to raw('&copy; 2014 Irrational Design'), 'http://irrationaldesign.com', target: '_blank'
         = mail_to('support@makerparent.com', 'Contact')
         
+        
+        - if user_signed_in? && current_user.id == 1
+          %br
+          %br
+          %br
+          %br 
+          %p= "#{User.count} users" 
+          %p= "#{EmailSetting.count} emails" 
