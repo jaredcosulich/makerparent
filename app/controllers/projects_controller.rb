@@ -5,35 +5,34 @@ class ProjectsController < ApplicationController
   # GET /projects
   def index
     @title = 'Explore Projects'
-    @projects = Project.paginate(page: params[:page], per_page: 10)
     
-    if params.include?(:sort)
-      if params[:sort] == 'popular'
-        @projects = @projects.order('experiences_count desc, bookmarks_count desc')
-      elsif params[:sort] == 'simple'
-        @projects = @projects.order('average_simple asc')
-      elsif params[:sort] == 'recent'
-        @projects = @projects.order('created_at desc')
-      end
-    end   
-
-    if params.include?(:sort2)
-      if params[:sort2] == 'popular'
-        @projects = @projects.order('experiences_count desc, bookmarks_count desc')
-      elsif params[:sort2] == 'simple'
-        @projects = @projects.order('average_simple asc')
-      elsif params[:sort2] == 'recent'
-        @projects = @projects.order('created_at desc')
-      end
-    end   
-
-    @projects = @projects.order('experiences_count desc, bookmarks_count desc')
+    order = []
 
     if params.include?(:age)
       age = params[:age].to_i
-      @projects = @projects.order("min_age > #{age + 2}, @ (#{age} - min_age) asc, min_age > #{age}") 
+      order << "min_age > #{age + 2}"
+      order << "@ (#{age} - min_age) asc, min_age > #{age}"
     end       
     
+    [:sort, :sort2].each do |param|
+      if params.include?(param)
+        if params[param] == 'popular'
+          order << 'experiences_count desc'
+          order << 'bookmarks_count desc'
+        elsif params[param] == 'simple'
+          order << 'average_simple asc'
+        elsif params[param] == 'recent'
+          order << 'created_at desc'
+        end
+      end   
+    end
+    
+    unless params.include?(:sort) or params.include?(:sort2)
+      order << 'experiences_count desc'
+      order << 'bookmarks_count desc' 
+    end
+    
+     @projects = Project.paginate(page: params[:page], per_page: 10).order(order.join(', '))
   end
 
   # GET /projects/1
