@@ -21,7 +21,8 @@ class User < ActiveRecord::Base
   private
     
     def create_email_settings
-      User.create_email_setting
+      create_email_setting
+      email_setting.update_attributes(weekly_newsletter: true)
     end
 
 end
