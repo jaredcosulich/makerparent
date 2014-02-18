@@ -1,5 +1,6 @@
 class Project < ActiveRecord::Base
   include ActionView::Helpers::TextHelper
+  include ActionView::Helpers::AssetTagHelper
 
   belongs_to :user
   has_many :instructions, dependent: :destroy
