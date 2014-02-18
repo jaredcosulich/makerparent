@@ -1,6 +1,5 @@
 class Project < ActiveRecord::Base
   include ActionView::Helpers::TextHelper
-  include ActionView::Helpers::AssetTagHelper
 
   belongs_to :user
   has_many :instructions, dependent: :destroy
@@ -51,7 +50,7 @@ class Project < ActiveRecord::Base
     })
     
     client.photo("makerparent.tumblr.com", {
-      source: image_tag(photo.url(:medium)), 
+      source: photo.url(:medium), 
       caption: truncate(description.gsub(/\r/, '<br/>'), :length => 250)
     })
     
