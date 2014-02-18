@@ -49,18 +49,35 @@ class Project < ActiveRecord::Base
       :oauth_token_secret => ENV['TUMBLR_OAUTH_SECRET']
     })
         
+    # body = """
+    #   <img src='#{photo.url(:medium)}' style='display: block; margin: 0 auto 12px auto;'/>
+    #   <p>#{truncate(description.gsub(/\r/, '<br/>'), :length => 250)}</p>
+    #   <p><a href='http://www.makerparent.com/projects/#{id}'>Visit Project ></a></p>
+    # """
+    # puts title
+    # puts body
+    # 
+    # client.text("makerparent.tumblr.com", {
+    #   title: title,
+    #   body: body
+    # })
+    
+    
     body = """
-      <img src='#{photo.url(:medium)}' style='display: block; margin: 0 auto 12px auto;'/>
+      <h3>#{title}</h3>
       <p>#{truncate(description.gsub(/\r/, '<br/>'), :length => 250)}</p>
       <p><a href='http://www.makerparent.com/projects/#{id}'>Visit Project ></a></p>
     """
-    puts title
+    puts photo.url(:medium)
+    puts "http://www.makerparent.com/projects/#{id}"
     puts body
     
-    client.text("makerparent.tumblr.com", {
-      title: title,
+    client.photo("makerparent.tumblr.com", {
+      source: photo.url(:medium),
+      link: "http://www.makerparent.com/projects/#{id}"
       body: body
     })
+    
     
   end
   
