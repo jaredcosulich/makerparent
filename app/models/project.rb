@@ -48,14 +48,18 @@ class Project < ActiveRecord::Base
       :oauth_token => ENV['TUMBLR_OAUTH_TOKEN'],
       :oauth_token_secret => ENV['TUMBLR_OAUTH_SECRET']
     })
-    
+        
+    body = """
+      <img src='#{photo.url(:medium)}' style='display: block; margin: 0 auto 12px auto;'/>
+      <p>#{truncate(description.gsub(/\r/, '<br/>'), :length => 250)}</p>
+      <p><a href='http://www.makerparent.com/projects/#{id}'>Visit Project ></a></p>
+    """
     puts title
-    puts truncate(description.gsub(/\r/, '<br/>'), :length => 250)
-    puts photo.url(:medium)
+    puts body
     
-    client.photo("makerparent.tumblr.com", {
-      source: photo.url(:medium), 
-      caption: truncate(description.gsub(/\r/, '<br/>'), :length => 250)
+    client.text("makerparent.tumblr.com", {
+      title: title
+      body: body
     })
     
   end
