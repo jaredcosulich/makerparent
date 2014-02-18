@@ -49,8 +49,10 @@ class Project < ActiveRecord::Base
       :oauth_token_secret => ENV['TUMBLR_OAUTH_SECRET']
     })
     
-    puts photo.url(:medium)
+    puts title
     puts truncate(description.gsub(/\r/, '<br/>'), :length => 250)
+    puts photo.url(:medium)
+    
     client.photo("makerparent.tumblr.com", {
       source: photo.url(:medium), 
       caption: truncate(description.gsub(/\r/, '<br/>'), :length => 250)
