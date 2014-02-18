@@ -1,4 +1,5 @@
 class Project < ActiveRecord::Base
+  include ActionView::Helpers::TextHelper
 
   belongs_to :user
   has_many :instructions, dependent: :destroy
@@ -39,6 +40,21 @@ class Project < ActiveRecord::Base
     descriptions = long ? LONG_ESTIMATED_SIMPLE_DESCRIPTIONS : ESTIMATED_SIMPLE_DESCRIPTIONS
     descriptions[estimated_simple]
   end  
+  
+  def post_to_tumblr
+    client = Tumblr::Client.new({
+      :consumer_key => ENV['TUMBLR_CONSUMER_KEY'],
+      :consumer_secret => ENV['TUMBLR_CONSUMER_SECRET'],
+      :oauth_token => ENV['TUMBLR_OAUTH_TOKEN'],
+      :oauth_token_secret => ENV['TUMBLR_OAUTH_SECRET']
+    })
+    
+    client.photo("makerparent.tumblr.com", {
+      source: image_tag(photo.url(:medium)), 
+      caption: truncate(description.gsub(/\r/, '<br/>'), :length => 250)
+    })
+    
+  end
   
   private
   
