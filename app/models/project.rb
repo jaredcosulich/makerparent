@@ -58,7 +58,7 @@ class Project < ActiveRecord::Base
     puts body
     
     client.text("makerparent.tumblr.com", {
-      title: title
+      title: title,
       body: body
     })
     
