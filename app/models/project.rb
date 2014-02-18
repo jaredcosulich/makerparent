@@ -64,13 +64,12 @@ class Project < ActiveRecord::Base
     
     
     caption = """
-      <h3>#{title}</h3>
-      <p>#{truncate(description.gsub(/\r/, '<br/>'), :length => 250)}</p>
-      <p><a href='http://www.makerparent.com/projects/#{id}'>Visit Project ></a></p>
+      <div style='text-align: center;'>
+        <h3>#{title}</h3>
+        <p>#{truncate(description.gsub(/\r/, '<br/>'), :length => 250)}</p>
+        <p><a href='http://www.makerparent.com/projects/#{id}'>Visit Project ></a></p>
+      </div>
     """
-    puts photo.url(:medium)
-    puts "http://www.makerparent.com/projects/#{id}"
-    puts caption
     
     client.photo("makerparent.tumblr.com", {
       source: photo.url(:medium),
