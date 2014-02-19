@@ -9,7 +9,7 @@ class Project < ActiveRecord::Base
   
   has_attached_file :photo, 
     :styles => { rect: '300x200#', square: '150x150#', medium: '300x300>', large: '540', thumb: '100x100>' },
-    :convert_options => {:large => "-gravity center -extent 540"} 
+    :convert_options => {:large => "-gravity center -extent 540"}, 
     :default_url => "/images/:style/missing.png"
 
   before_create :set_defaults
