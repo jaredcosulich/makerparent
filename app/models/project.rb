@@ -14,6 +14,8 @@ class Project < ActiveRecord::Base
   before_create :set_defaults
   before_save :calculate_averages
   
+  after_create :post_to_tumblr
+  
   LONG_ESTIMATED_SIMPLE_DESCRIPTIONS = [
     'Extremely simple, requires just a few household items',
     '', '', '',
@@ -49,20 +51,6 @@ class Project < ActiveRecord::Base
       :oauth_token_secret => ENV['TUMBLR_OAUTH_SECRET']
     })
         
-    # body = """
-    #   <img src='#{photo.url(:medium)}' style='display: block; margin: 0 auto 12px auto;'/>
-    #   <p>#{truncate(description.gsub(/\r/, '<br/>'), :length => 250)}</p>
-    #   <p><a href='http://www.makerparent.com/projects/#{id}'>Visit Project ></a></p>
-    # """
-    # puts title
-    # puts body
-    # 
-    # client.text("makerparent.tumblr.com", {
-    #   title: title,
-    #   body: body
-    # })
-    
-    
     caption = """
       <div class='project'>
         <h3>#{title}</h3>
