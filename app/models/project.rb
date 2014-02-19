@@ -54,7 +54,7 @@ class Project < ActiveRecord::Base
     caption = """
       <div class='project'>
         <h3>#{title}</h3>
-        <p>#{truncate(description.gsub(/\r/, '<br/>'), :length => 120, omission: '...')}</p>
+        <p>#{truncate(description.gsub(/\r/, ' '), :length => 120, omission: '...')}</p>
         <p><a href='http://www.makerparent.com/projects/#{id}'>Visit Project ></a></p>
       </div>
     """
