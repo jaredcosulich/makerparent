@@ -8,8 +8,8 @@ class Project < ActiveRecord::Base
   has_many :bookmarks, counter_cache: true, dependent: :destroy
   
   has_attached_file :photo, 
-    :styles => { rect: '300x200#', square: '150x150#', medium: '300x300>', large: '540', thumb: '100x100>' },
-    :convert_options => {:large => "-gravity center -extent 540"}, 
+    :styles => { rect: '300x200#', square: '150x150#', medium: '300x300>', wide: '540x300#', thumb: '100x100>' },
+    :convert_options => {:large => "-gravity center -extent 540x300"}, 
     :default_url => "/images/:style/missing.png"
 
   before_create :set_defaults
@@ -61,7 +61,7 @@ class Project < ActiveRecord::Base
     """
     
     client.photo("makerparent.tumblr.com", {
-      source: photo.url(:medium),
+      source: photo.url(:large),
       link: "http://www.makerparent.com/projects/#{id}",
       caption: caption
     })
