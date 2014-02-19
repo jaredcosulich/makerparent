@@ -67,7 +67,8 @@ class Project < ActiveRecord::Base
     client.photo("makerparent.tumblr.com", {
       source: photo.url(:medium),
       link: "http://www.makerparent.com/projects/#{id}",
-      caption: caption
+      caption: caption,
+      tags: "diy, maker, project"
     })
     
     
