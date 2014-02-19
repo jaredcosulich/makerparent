@@ -23,7 +23,6 @@ class User < ActiveRecord::Base
     mc = Mailchimp::API.new(ENV['MAILCHIMP_API_KEY'])
     
     list_id = 324229
-    email = params['email']
     begin
       mc.lists.subscribe(list_id, {'email' => email})
     rescue Mailchimp::ListAlreadySubscribedError
