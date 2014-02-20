@@ -17,7 +17,7 @@ class ProjectsController < ApplicationController
     [:sort, :sort2].each do |param|
       if params.include?(param)
         if params[param] == 'popular'
-          order << 'experiences_count desc'
+          order << '(experiences_count - 1) desc'
           order << 'bookmarks_count desc'
         elsif params[param] == 'simple'
           order << 'average_simple asc'
