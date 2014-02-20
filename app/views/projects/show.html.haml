@@ -56,6 +56,10 @@
             - if @project.min_age.present? && @project.min_age > 0
               %li
                 = pluralize(@project.min_age, '+ year old', '+ years old').gsub(/\s\+/, '+')
+            - if @project.bookmarks.count > 0
+              %li
+                = pluralize(@project.bookmarks.count, 'bookmark') 
+                
           %ul.pull-left
             - if @project.min_time.present? && @project.min_time > 0
               %li

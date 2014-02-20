@@ -70,8 +70,6 @@ class Project < ActiveRecord::Base
       caption: caption,
       tags: "diy, maker, project"
     })
-    
-    
   end
   
   private
