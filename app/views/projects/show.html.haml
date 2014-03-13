@@ -21,12 +21,16 @@
               = link_to raw('Visit Website &raquo;'), @project.url, class: 'btn btn-primary', target: '_blank'
           
         - if user_signed_in? && (current_user == @project.user || current_user.admin?)
-          .admin_actions
+          .admin_actions              
             %a.icon-edit{href: (@project.instructions.blank? ? '#add-instructions' : '#instructions'), data: {toggle: 'modal'}} Instructions
             &nbsp;|&nbsp;
             = link_to ' Edit', edit_project_path(@project), class: 'icon-pencil'
             &nbsp;|&nbsp;
-            = link_to ' Delete', @project, method: 'delete', class: 'icon-trash'
+            = link_to ' Delete', @project, method: 'delete', class: 'icon-trash', confirm: "Are you sure you want to delete this project?"
+            - if current_user.admin?
+              &nbsp;|&nbsp;
+              = link_to ' POST', project_path(@project, project: {tumblr: 1}), method: 'put'
+            
         .clearfix
         
   .col-md-4.col-xs-4

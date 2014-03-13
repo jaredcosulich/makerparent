@@ -18,9 +18,7 @@ class Project < ActiveRecord::Base
 
   before_create :set_defaults
   before_save :calculate_averages
-  
-  after_create :post_to_tumblr
-  
+    
   LONG_ESTIMATED_SIMPLE_DESCRIPTIONS = [
     'Extremely simple, requires just a few household items',
     '', '', '',

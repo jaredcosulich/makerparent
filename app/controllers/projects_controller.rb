@@ -68,6 +68,12 @@ class ProjectsController < ApplicationController
 
   # PATCH/PUT /projects/1
   def update
+    if params[:project].include?(:tumblr)
+      raise @project.post_to_tumblr.inspect
+      redirect_to @project
+      return
+    end    
+    
     if @project.update(project_params)
       redirect_to @project
     else
@@ -89,6 +95,6 @@ class ProjectsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def project_params
-      params.require(:project).permit(:title, :url, :description, :photo, :min_time, :max_time, :min_age, :max_age, :min_cost, :max_cost, :estimated_simple, :estimated_age, :estimated_cost, :estimated_time)
+      params.require(:project).permit(:title, :url, :description, :photo, :min_time, :max_time, :min_age, :max_age, :min_cost, :max_cost, :estimated_simple, :estimated_age, :estimated_cost, :estimated_time, :tumblr)
     end
 end
