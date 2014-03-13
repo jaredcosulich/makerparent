@@ -69,7 +69,7 @@ class ProjectsController < ApplicationController
   # PATCH/PUT /projects/1
   def update
     if params[:project].include?(:tumblr)
-      raise @project.post_to_tumblr.inspect
+      @project.post_to_tumblr
       redirect_to @project
       return
     end    
