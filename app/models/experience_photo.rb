@@ -8,10 +8,9 @@ class ExperiencePhoto < ActiveRecord::Base
     Cloudinary::Uploader.destroy(self.cloudinary_id, invalidate: true)
   end
   
-
+  
   def delete_hosted
-    delete_cloudinary# if cloudify_deleted_at.nil?
-    #delete_s3 unless s3_added_at.nil?
+    delete_cloudinary
   end
   
   
